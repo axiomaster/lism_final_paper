@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=latex 2017.3.5)  6 MAR 2017 10:13
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=latex 2017.3.5)  6 MAR 2017 22:12
 entering extended mode
 **templet.tex
 (C:\Users\lism\Desktop\lism_final_paper\templet.tex
@@ -711,6 +711,13 @@ Package: fp-eval 1995/04/03
 \diagbox@sepl=\dimen175
 \diagbox@sepr=\dimen176
 )
+(d:\CTEX\MiKTeX\tex\latex\amsfonts\amsfonts.sty
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+)
 (C:\Users\lism\Desktop\lism_final_paper\templet.aux
 (C:\Users\lism\Desktop\lism_final_paper\chapters/abstract.aux)
 (C:\Users\lism\Desktop\lism_final_paper\chapters/general.aux)
@@ -721,87 +728,87 @@ Package: fp-eval 1995/04/03
 (C:\Users\lism\Desktop\lism_final_paper\chapters/paper_next.aux)
 (C:\Users\lism\Desktop\lism_final_paper\chapters/thanks.aux)
 (C:\Users\lism\Desktop\lism_final_paper\chapters/resume.aux))
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C00/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C05/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C09/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C10/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C20/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C19/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C40/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C42/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C43/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C50/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C52/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C49/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C60/mj/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C61/mj/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C63/mj/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C64/mj/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C65/mj/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C70/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C31/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C32/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C33/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C34/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C35/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C36/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C37/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C80/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C81/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C01/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C11/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C21/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C41/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for C62/song/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 12.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C00/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C05/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C09/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C10/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C20/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C19/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C40/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C42/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C43/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C50/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C52/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C49/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C60/mj/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C61/mj/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C63/mj/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C64/mj/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C65/mj/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C70/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C31/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C32/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C33/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C34/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C35/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C36/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C37/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C80/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C81/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C01/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C11/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C21/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C41/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for C62/song/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 13.
 
 (d:\CTEX\MiKTeX\tex\latex\psnfss\ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -809,7 +816,7 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box47
-Package hyperref Info: Link coloring ON on input line 12.
+Package hyperref Info: Link coloring ON on input line 13.
 
 (d:\CTEX\MiKTeX\tex\latex\hyperref\nameref.sty
 Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
@@ -819,9 +826,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count286
 )
-LaTeX Info: Redefining \ref on input line 12.
-LaTeX Info: Redefining \pageref on input line 12.
-LaTeX Info: Redefining \nameref on input line 12.
+LaTeX Info: Redefining \ref on input line 13.
+LaTeX Info: Redefining \pageref on input line 13.
+LaTeX Info: Redefining \nameref on input line 13.
 
 (C:\Users\lism\Desktop\lism_final_paper\templet.out)
 (C:\Users\lism\Desktop\lism_final_paper\templet.out)
@@ -837,24 +844,24 @@ File: extended.enc 2008/12/29 4.8.2
 File: extended.chr 2008/12/29 4.8.2
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <22.08> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 13.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 14.
 LaTeX Font Info:    Try loading font information for C19+zhsong on input line 1
-3.
+4.
 
 (d:\CTEX\MiKTeX\tex\latex\zhmetrics\c19zhsong.fd
 File: c19zhsong.fd 2009/09/23 4.8.2
 )
 \linelength=\skip104
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.05> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 13.
-LaTeX Font Info:    Try loading font information for C19+zhhei on input line 13
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 14.
+LaTeX Font Info:    Try loading font information for C19+zhhei on input line 14
 .
 
 (d:\CTEX\MiKTeX\tex\latex\zhmetrics\c19zhhei.fd
 File: c19zhhei.fd 2009/09/23 4.8.2
 )
 Package CJKpunct Info: punctuation spaces for family 'zhhei' do not exist. Use 
-family 'def' instead. on input line 13.
+family 'def' instead. on input line 14.
  [1
 
 ] [2
@@ -862,19 +869,23 @@ family 'def' instead. on input line 13.
 
 ]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.54> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 13.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 14.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <26.1> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 13.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 14.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.09> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 13.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 14.
 Package CJKpunct Info: punctuation spaces for family 'zhsong' do not exist. Use
- family 'def' instead. on input line 13.
+ family 'def' instead. on input line 14.
+LaTeX Font Info:    Try loading font information for U+msa on input line 14.
 
+(d:\CTEX\MiKTeX\tex\latex\amsfonts\umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 14.
 
-LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <10.54> not available
-(Font)              size <10.95> substituted on input line 13.
-
-[3
+(d:\CTEX\MiKTeX\tex\latex\amsfonts\umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+) [3
 
 ] [4
 
@@ -886,7 +897,7 @@ LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <10.54> not available
 
 ]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12.05> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 13.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 14.
  [7
 
 ] [8
@@ -931,19 +942,18 @@ File: c19rm.fd 2007/05/06 v0.8a ctex font definition file
 ]
 [12
 
-]) (C:\Users\lism\Desktop\lism_final_paper\templet.toc)
+]) (C:\Users\lism\Desktop\lism_final_paper\templet.toc [13
+
+
+])
 \tf@toc=\write6
- [13
-
-
-] [14
-
-]
+ [14]
 (C:\Users\lism\Desktop\lism_final_paper\chapters/general.tex
 第一\ignorespaces 章
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <15.06> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 4.
 ) [1
+
 
 
 
@@ -953,13 +963,32 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <15.06> not available
 
 ]
 第二\ignorespaces 章
-) [3] (C:\Users\lism\Desktop\lism_final_paper\chapters/general_LTV.tex [4
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 19.
+(d:\CTEX\MiKTeX\tex\latex\psnfss\ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+File: figures/p2_1.eps Graphic file (type eps)
+ <figures/p2_1.eps> [3]
 
+Package amsmath Warning: Foreign command \atopwithdelims;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 50.
 
+File: figures/p2_2.eps Graphic file (type eps)
+<figures/p2_2.eps>
 
-]
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[4]
+File: figures/p2_3.eps Graphic file (type eps)
+ <figures/p2_3.eps> [5]) [6]
+(C:\Users\lism\Desktop\lism_final_paper\chapters/general_LTV.tex
 第三\ignorespaces 章
-) [5] (C:\Users\lism\Desktop\lism_final_paper\chapters/improve_CS.tex [6
+) [7
+
+
+
+] (C:\Users\lism\Desktop\lism_final_paper\chapters/improve_CS.tex [8
 
 
 
@@ -969,38 +998,38 @@ File: figures/fig.eps Graphic file (type eps)
 <figures/fig.eps>
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [7])
-[8] (C:\Users\lism\Desktop\lism_final_paper\chapters/low_complexity.tex
+ [9])
+[10] (C:\Users\lism\Desktop\lism_final_paper\chapters/low_complexity.tex
 第五\ignorespaces 章
-[9
+[11
 
 
 
-]) [10] [11] (C:\Users\lism\Desktop\lism_final_paper\chapters/paper_next.tex
-[12
+]) [12] [13] (C:\Users\lism\Desktop\lism_final_paper\chapters/paper_next.tex [1
+4
 
 
 
 ]
 第六\ignorespaces 章
-) [13] [14
+) [15] [16
 
 
 ]
 No file templet.bbl.
-(C:\Users\lism\Desktop\lism_final_paper\chapters/thanks.tex) [15
+(C:\Users\lism\Desktop\lism_final_paper\chapters/thanks.tex) [17
 
 
 ]
-(C:\Users\lism\Desktop\lism_final_paper\chapters/resume.tex [16
+(C:\Users\lism\Desktop\lism_final_paper\chapters/resume.tex [18
 
 
 
-] [17] [18
+] [19] [20
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 25.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 25.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 26.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 26.
 
 (C:\Users\lism\Desktop\lism_final_paper\templet.aux
 (C:\Users\lism\Desktop\lism_final_paper\chapters/abstract.aux)
@@ -1012,8 +1041,8 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 25.
 (C:\Users\lism\Desktop\lism_final_paper\chapters/paper_next.aux)
 (C:\Users\lism\Desktop\lism_final_paper\chapters/thanks.aux)
 (C:\Users\lism\Desktop\lism_final_paper\chapters/resume.aux))
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 25.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 25.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 26.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 26.
 
 
 Package rerunfilecheck Warning: File `templet.out' has changed.
@@ -1021,20 +1050,16 @@ Package rerunfilecheck Warning: File `templet.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `templet.out':
-(rerunfilecheck)             Before: 40A832EB8E4D580997D035779C9F91E7;3720
-(rerunfilecheck)             After:  DA2CDF0176FAFB54A1A398B274C36D04;1783.
-
-LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 0.41pt have occurred.
-
+(rerunfilecheck)             Before: 502BD97408E7F65F94CF9BD3DB910DA8;4467
+(rerunfilecheck)             After:  0D2AFAD5826E73B040ADCCD82E3F4C62;2138.
  ) 
 Here is how much of TeX's memory you used:
- 16651 strings out of 495355
- 270146 string characters out of 3183883
- 346929 words of memory out of 3000000
- 19373 multiletter control sequences out of 15000+200000
- 76167 words of font info for 251 fonts, out of 3000000 for 9000
+ 16907 strings out of 495355
+ 274226 string characters out of 3183883
+ 348153 words of memory out of 3000000
+ 19600 multiletter control sequences out of 15000+200000
+ 82164 words of font info for 274 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 48i,24n,47p,956b,944s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,24n,47p,956b,947s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on templet.dvi (40 pages, 112664 bytes).
+Output written on templet.dvi (42 pages, 130460 bytes).

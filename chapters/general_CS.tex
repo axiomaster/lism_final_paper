@@ -8,9 +8,113 @@
 
 \section{欠定线性系统及稀疏解}
 
+\subsection{欠定线性系统}
+对于线性方程组$\mathbf{Ax}=\mathbf{b}$，当矩阵${\mathbf{A}} \in {{\mathbf{R}}^{n \times m}}$ 且$n<m$ 时，称为欠定线性系统。在系统中，未知数个数大于方程数。由线性代数知，当$\mathbf{b}$不在矩阵$\mathbf{A}$ 列向量张成的空间中时，方程组无解；否则，有无穷多解。
+
+\subsection{正则化}
+对于欠定线性系统，我们只考虑有解的情况。为了能够得到确定的解，可以向线性系统增加条件，最常用的加条件方法就是正则化（regularization），即引入一个对解$\mathbf{x}$进行评价的函数 ，并期望其值越小越好。因此，欠定线性系统可以转化为如下的优化问题：
+\begin{equation}
+\begin{aligned}
+& \min_x J(\mathbf{x}) \\
+\texttt{s}.\texttt{t}. & \quad \mathbf{b} = \mathbf{Ax}
+\end{aligned}
+\end{equation}
+
+最常用的$J(\mathbf{x})$为$\mathbf{x}$的2范数的平方$\mathop {\left\| {\mathbf{x}} \right\|}\nolimits_2^2$。 对于$J(\mathbf{x}) = \mathop {\left\| {\mathbf{x}} \right\|}\nolimits_2^2$ 的优化问题，可以使用拉格朗日数乘法得到确定的唯一解。
+\begin{equation}
+L(\mathbf{x}) = \mathop {\left\| {\mathbf{x}} \right\|}\nolimits_2^2 + \mathbf{\lambda}^T(\mathbf{b=Ax})
+\end{equation}
+
+事实上，对于任意的严格凸的函数作为$J(\bullet)$，都能保证解的唯一性。
+
+\subsection{稀疏解}
+对于以$l_p-$范数作为$J(\mathbf{x})$，相比于$p>1$，$p \le 1$时具有让解变得稀疏的倾向，即$\mathbf{x}$ 中非零项更少。这种趋势可以通过以下图直观的看出。
+
+\begin{figure}[!h]
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[height=3cm]{figures/p2_1.eps}\\
+\caption{p范数与稀疏性的关系}
+\end{figure}
+
+从图中中可以直观看出，当$p\le1$时解有更大的几率落在坐标轴上，从而导致另一些分量为0，即解更趋于稀疏性。
+
+在可以产生稀疏解的范数中，极端情况下$p \rightarrow 0$。向量的$l_0-$范数定义为向量中非零值的个数。此时问题表述如下：
+\begin{equation}
+\begin{aligned}
+(P_0): & \mathop {\min }\limits_{\mathbf{x}} \mathop {\left\| {\mathbf{x}} \right\|}\nolimits_0 \\
+\texttt{s}.\texttt{t}. & \quad \mathbf{b} = \mathbf{Ax}
+\end{aligned}
+\end{equation}
+
+ $(P_2)$问题的解总是唯一的，但 $(P_0)$问题解的唯一性与可验证性并不容易确定。而且 $(P_2)$问题可以通过朗格朗日乘数法直接得到，但 $(P_0)$ 问题并没有有效的解法。可以使用穷举法检测 ${m \choose n}$ 种组合，但这种组合搜索问题复杂度与$m$成指数关系。事实上，已经证明了一般意义上 $(P_0)$问题是NP 难问题。
 
 \section{压缩感知理论}
+考虑一般的信号重建问题。对于某未知信号$\mathbf{x} \in \mathbb{C}^N$，通过某测量矩阵$\mathbf{\Phi} \in \mathbb{C}^{M\times N}$ 进行采样，得到未知信号$\mathbf{y} \in \mathbb{C}^M$的观测值 ，
+\begin{equation}
+\begin{aligned}
+\mathbf{y = \Phi x}
+\end{aligned}
+\end{equation}
 
+$\mathbf{y}$也可以看做原始信号$\mathbf{x}$在$\mathbf{\Phi}$下的线性投影，现在考虑由$\mathbf{y}$重构$\mathbf{x}$。 由于$\mathbf{y}$的维数远低于$\mathbf{x}$的维数，因此上式有无穷多个解，即无法准确重构出原始信号。
+但假设原始信号$\mathbf{x}$是$K$稀疏信号，即$\mathbf{x}$中只有$K$项不为0，并且$\mathbf{y}$ 与$\mathbf{\Phi}$ 满足一定条件，理论证明，信号$\mathbf{x}$可以由测量值$\mathbf{y}$通过求解最优$l_0$ 范数问题得到准确重构：
+
+\begin{equation}
+\begin{aligned}
+& \mathbf{\hat{x}= \arg \min{\left\|x\right\|_0}} \\
+\texttt{s}.\texttt{t}. & \quad \mathbf{\Phi x = y}
+\end{aligned}
+\end{equation}
+
+式中：$\left\|\bullet \right\|_0$为向量的$l_0$范数，表示向量$\mathbf{x}$中非零元素的个数。
+
+\begin{figure}[!h]
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[height=3cm]{figures/p2_2.eps}\\
+\caption{稀疏向量的压缩感知原理示意图}
+\end{figure}
+
+对于非稀疏信号，如果可以在变换域内进行稀疏表示，即$\mathbf{f=\Psi x}$，$\mathbf{x}$为该信号在变换域$\mathbf{\Psi}$ 的稀疏表示。对于测量公式$\mathbf{y=\Phi f}$，有
+
+\begin{equation}
+\mathbf{y = \Phi f = \Phi \Psi x = Ax}
+\end{equation}
+
+式中：$\mathbf{A=\Phi\Psi}$为 $M \times N$维矩阵，成为感知矩阵。如下图所示
+
+\begin{figure}[!h]
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[height=3cm]{figures/p2_3.eps}\\
+\caption{可稀疏表示向量的压缩感知原理示意图}
+\end{figure}
 
 \section{稀疏解的唯一性}
+
+在压缩感知框架下，稀疏信号正确从压缩的样本中重建，测量矩阵需要满足一定条件。目前常用的主要有3种条件：零空间特性、约束等距性和矩阵相干度分析。
+
+\subsection{约束等距条件（RIP）}
+
+RIP定义为对于任意的$k=1,2,3,...,K$，定义矩阵$\Phi$的等距常量（RIC）$\delta_K$为满足下式的最小值：
+
+\begin{equation}
+(1-\delta_K)\left\|\mathbf{a} \right\|_2^2 \le \left\| \mathbf{Ta} \right\|_2^2 \le (1+\delta_K)\left\|\mathbf{a} \right\|_2^2
+\end{equation}
+
+式中：$\mathbf{a}$为任意矢量，$0 < \delta_K < 1$称矩阵$\Phi$满足$K$阶RIP条件。
+
+对于两个具有相同稀疏度的不同信号，$\Phi$的RIP特性可以保持两者间的距离在观测空间的不变。而随机采样，有很高可能满足条件。
+但验证矩阵是否满足RIP条件，需要尝试所有向量，并不实用。
+
+\subsection{矩阵相关系数}
+
+对于矩阵$\mathbf{T}$，矩阵相关系数$\mu (\mathbf{T})$定义为矩阵中任意两列的相关系数中的最大值：
+
+\begin{equation}
+\mu ({\bf{T}}) = \mathop {\max }\limits_{1 \le i,j \le N,i \ne j} \frac{{\left| {\tau _i^H{\tau _j}} \right|}}{{\left\| {{\tau _i}} \right\| \cdot \left\| {{\tau _j}} \right\|}}
+\end{equation}
+
+已有研究表明，矩阵相关系数$\mu (\mathbf{T})$越小，从测量信号恢复出原始信号的概率越大。
 
