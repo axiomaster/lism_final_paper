@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=latex 2017.3.5)  5 MAR 2017 22:19
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=latex 2017.3.5)  6 MAR 2017 10:13
 entering extended mode
 **templet.tex
-(E:\lism_final_paper\templet.tex
+(C:\Users\lism\Desktop\lism_final_paper\templet.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for loaded.
-(E:\lism_final_paper\XDUthesis.cls
+(C:\Users\lism\Desktop\lism_final_paper\XDUthesis.cls
 Document Class: XDUthesis 2015/01/01 XDU, Thesis document class, version 0.1.0
 (d:\CTEX\MiKTeX\tex\latex\ctex\ctexbook.cls
 Document Class: ctexbook 2011/03/11 v1.02c ctexbook document class
@@ -559,9 +559,10 @@ Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 126.
 Package hyperref Info: Option `colorlinks' set `true' on input line 126.
 Package hyperref Info: Option `plainpages' set `false' on input line 126.
 \c@XDU@counter@resumelistcounter=\count187
-) (E:\lism_final_paper\XDUthesis.def
+) (C:\Users\lism\Desktop\lism_final_paper\XDUthesis.def
 File: XDUthesis.def 2015/01/01 XDU, Thesis document class, version 0.1.0
-) (E:\lism_final_paper\XDUthesis.cfg
+)
+(C:\Users\lism\Desktop\lism_final_paper\XDUthesis.cfg
 File: XDUthesis.cfg 2015/01/01 XDU, Thesis document class, version 0.1.0
 )
 (d:\CTEX\MiKTeX\tex\latex\psnfss\times.sty
@@ -710,7 +711,16 @@ Package: fp-eval 1995/04/03
 \diagbox@sepl=\dimen175
 \diagbox@sepr=\dimen176
 )
-No file templet.aux.
+(C:\Users\lism\Desktop\lism_final_paper\templet.aux
+(C:\Users\lism\Desktop\lism_final_paper\chapters/abstract.aux)
+(C:\Users\lism\Desktop\lism_final_paper\chapters/general.aux)
+(C:\Users\lism\Desktop\lism_final_paper\chapters/general_CS.aux)
+(C:\Users\lism\Desktop\lism_final_paper\chapters/general_LTV.aux)
+(C:\Users\lism\Desktop\lism_final_paper\chapters/improve_CS.aux)
+(C:\Users\lism\Desktop\lism_final_paper\chapters/low_complexity.aux)
+(C:\Users\lism\Desktop\lism_final_paper\chapters/paper_next.aux)
+(C:\Users\lism\Desktop\lism_final_paper\chapters/thanks.aux)
+(C:\Users\lism\Desktop\lism_final_paper\chapters/resume.aux))
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
@@ -792,6 +802,7 @@ LaTeX Font Info:    ... okay on input line 12.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
 LaTeX Font Info:    Try loading font information for OT1+ptm on input line 12.
+
 (d:\CTEX\MiKTeX\tex\latex\psnfss\ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
@@ -811,10 +822,10 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 12.
 LaTeX Info: Redefining \pageref on input line 12.
 LaTeX Info: Redefining \nameref on input line 12.
+
+(C:\Users\lism\Desktop\lism_final_paper\templet.out)
+(C:\Users\lism\Desktop\lism_final_paper\templet.out)
 \@outlinefile=\write3
-
-
-Package hyperref Warning: Rerun to get /PageLabels entry.
 
 (d:\CTEX\MiKTeX\tex\latex\cjk\standard.bdg
 File: standard.bdg 2008/12/29 4.8.2
@@ -833,8 +844,6 @@ LaTeX Font Info:    Try loading font information for C19+zhsong on input line 1
 (d:\CTEX\MiKTeX\tex\latex\zhmetrics\c19zhsong.fd
 File: c19zhsong.fd 2009/09/23 4.8.2
 )
-Package CJKpunct Info: punctuation spaces for family 'zhsong' do not exist. Use
- family 'def' instead. on input line 13.
 \linelength=\skip104
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.05> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 13.
@@ -858,6 +867,8 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <26.1> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 13.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.09> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 13.
+Package CJKpunct Info: punctuation spaces for family 'zhsong' do not exist. Use
+ family 'def' instead. on input line 13.
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <10.54> not available
@@ -881,7 +892,8 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12.05> not available
 ] [8
 
 
-] (E:\lism_final_paper\chapters/abstract.tex
+]
+(C:\Users\lism\Desktop\lism_final_paper\chapters/abstract.tex
 LaTeX Font Info:    Try loading font information for C19+rm on input line 3.
 
 (d:\CTEX\MiKTeX\tex\latex\ctex\fd\c19rm.fd
@@ -897,17 +909,18 @@ File: c19rm.fd 2007/05/06 v0.8a ctex font definition file
 ] [4
 
 ]
+(C:\Users\lism\Desktop\lism_final_paper\templet.lof)
 \tf@lof=\write4
  [5
 
 ] [6
 
 ]
+(C:\Users\lism\Desktop\lism_final_paper\templet.lot)
 \tf@lot=\write5
  [7
 
-]
-[8
+] [8
 
 ] [9
 
@@ -915,72 +928,92 @@ File: c19rm.fd 2007/05/06 v0.8a ctex font definition file
 
 ] [11
 
-] [12
+]
+[12
 
-])
+]) (C:\Users\lism\Desktop\lism_final_paper\templet.toc)
 \tf@toc=\write6
  [13
 
 
 ] [14
 
-] (E:\lism_final_paper\chapters/general.tex
+]
+(C:\Users\lism\Desktop\lism_final_paper\chapters/general.tex
 第一\ignorespaces 章
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <15.06> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 4.
 ) [1
 
 
 
-] (E:\lism_final_paper\chapters/substance.tex [2
+] (C:\Users\lism\Desktop\lism_final_paper\chapters/general_CS.tex [2
 
 
 
 ]
 第二\ignorespaces 章
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <15.06> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 6.
-[3] [4]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [5]
-[6] [7] [8] [9]) [10] (E:\lism_final_paper\chapters/edit.tex
-第三\ignorespaces 章
-) [11
-
-
-
-] [12] (E:\lism_final_paper\chapters/guide.tex
-第四\ignorespaces 章
-File: figures/fig.eps Graphic file (type eps)
-<figures/fig.eps> [13
-
-
-
-]) [14]
-No file templet.bbl.
-(E:\lism_final_paper\chapters/thanks.tex) [15
-
+) [3] (C:\Users\lism\Desktop\lism_final_paper\chapters/general_LTV.tex [4
 
 
 
 ]
-(E:\lism_final_paper\chapters/resume.tex [16
+第三\ignorespaces 章
+) [5] (C:\Users\lism\Desktop\lism_final_paper\chapters/improve_CS.tex [6
+
+
+
+]
+第四\ignorespaces 章
+File: figures/fig.eps Graphic file (type eps)
+<figures/fig.eps>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7])
+[8] (C:\Users\lism\Desktop\lism_final_paper\chapters/low_complexity.tex
+第五\ignorespaces 章
+[9
+
+
+
+]) [10] [11] (C:\Users\lism\Desktop\lism_final_paper\chapters/paper_next.tex
+[12
+
+
+
+]
+第六\ignorespaces 章
+) [13] [14
+
+
+]
+No file templet.bbl.
+(C:\Users\lism\Desktop\lism_final_paper\chapters/thanks.tex) [15
+
+
+]
+(C:\Users\lism\Desktop\lism_final_paper\chapters/resume.tex [16
 
 
 
 ] [17] [18
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 23.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 23.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 25.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 25.
 
-(E:\lism_final_paper\templet.aux (E:\lism_final_paper\chapters/abstract.aux)
-(E:\lism_final_paper\chapters/general.aux)
-(E:\lism_final_paper\chapters/substance.aux)
-(E:\lism_final_paper\chapters/edit.aux) (E:\lism_final_paper\chapters/guide.aux
-) (E:\lism_final_paper\chapters/thanks.aux)
-(E:\lism_final_paper\chapters/resume.aux))
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 23.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 23.
+(C:\Users\lism\Desktop\lism_final_paper\templet.aux
+(C:\Users\lism\Desktop\lism_final_paper\chapters/abstract.aux)
+(C:\Users\lism\Desktop\lism_final_paper\chapters/general.aux)
+(C:\Users\lism\Desktop\lism_final_paper\chapters/general_CS.aux)
+(C:\Users\lism\Desktop\lism_final_paper\chapters/general_LTV.aux)
+(C:\Users\lism\Desktop\lism_final_paper\chapters/improve_CS.aux)
+(C:\Users\lism\Desktop\lism_final_paper\chapters/low_complexity.aux)
+(C:\Users\lism\Desktop\lism_final_paper\chapters/paper_next.aux)
+(C:\Users\lism\Desktop\lism_final_paper\chapters/thanks.aux)
+(C:\Users\lism\Desktop\lism_final_paper\chapters/resume.aux))
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 25.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 25.
 
 
 Package rerunfilecheck Warning: File `templet.out' has changed.
@@ -988,20 +1021,20 @@ Package rerunfilecheck Warning: File `templet.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `templet.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  A6EE6BE6B3C8CEBB70247957E0B06DF5;1961.
+(rerunfilecheck)             Before: 40A832EB8E4D580997D035779C9F91E7;3720
+(rerunfilecheck)             After:  DA2CDF0176FAFB54A1A398B274C36D04;1783.
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.41pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 16596 strings out of 495355
- 266629 string characters out of 3183883
- 338469 words of memory out of 3000000
- 19359 multiletter control sequences out of 15000+200000
- 72493 words of font info for 239 fonts, out of 3000000 for 9000
+ 16651 strings out of 495355
+ 270146 string characters out of 3183883
+ 346929 words of memory out of 3000000
+ 19373 multiletter control sequences out of 15000+200000
+ 76167 words of font info for 251 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 48i,24n,47p,950b,941s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,24n,47p,956b,944s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on templet.dvi (40 pages, 105020 bytes).
+Output written on templet.dvi (40 pages, 112664 bytes).
