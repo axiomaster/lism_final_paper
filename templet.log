@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=latex 2017.3.5)  6 MAR 2017 22:12
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=latex 2017.3.5)  7 MAR 2017 22:53
 entering extended mode
 **templet.tex
 (C:\Users\lism\Desktop\lism_final_paper\templet.tex
@@ -721,8 +721,8 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (C:\Users\lism\Desktop\lism_final_paper\templet.aux
 (C:\Users\lism\Desktop\lism_final_paper\chapters/abstract.aux)
 (C:\Users\lism\Desktop\lism_final_paper\chapters/general.aux)
-(C:\Users\lism\Desktop\lism_final_paper\chapters/general_CS.aux)
 (C:\Users\lism\Desktop\lism_final_paper\chapters/general_LTV.aux)
+(C:\Users\lism\Desktop\lism_final_paper\chapters/general_CS.aux)
 (C:\Users\lism\Desktop\lism_final_paper\chapters/improve_CS.aux)
 (C:\Users\lism\Desktop\lism_final_paper\chapters/low_complexity.aux)
 (C:\Users\lism\Desktop\lism_final_paper\chapters/paper_next.aux)
@@ -957,18 +957,45 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <15.06> not available
 
 
 
-] (C:\Users\lism\Desktop\lism_final_paper\chapters/general_CS.tex [2
+] (C:\Users\lism\Desktop\lism_final_paper\chapters/general_LTV.tex [2
 
 
 
 ]
 第二\ignorespaces 章
+File: figures/p3_4.eps Graphic file (type eps)
+<figures/p3_4.eps>
+File: figures/p3_5.eps Graphic file (type eps)
+ <figures/p3_5.eps>
+Overfull \hbox (3.946pt too wide) in paragraph at lines 34--34
+ [][][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+File: figures/p3_1.eps Graphic file (type eps)
+<figures/p3_1.eps> [3]
+Underfull \vbox (badness 2343) has occurred while \output is active []
+
+ [4]
+File: figures/p3_2.eps Graphic file (type eps)
+
+<figures/p3_2.eps> [5] [6]
+File: figures/p3_3.eps Graphic file (type eps)
+ <figures/p3_3.eps>) [7]
+(C:\Users\lism\Desktop\lism_final_paper\chapters/general_CS.tex [8
+
+
+
+]
+第三\ignorespaces 章
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 19.
 (d:\CTEX\MiKTeX\tex\latex\psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 File: figures/p2_1.eps Graphic file (type eps)
- <figures/p2_1.eps> [3]
+ <figures/p2_1.eps> [9]
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
@@ -979,53 +1006,49 @@ File: figures/p2_2.eps Graphic file (type eps)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[4]
+[10]
 File: figures/p2_3.eps Graphic file (type eps)
- <figures/p2_3.eps> [5]) [6]
-(C:\Users\lism\Desktop\lism_final_paper\chapters/general_LTV.tex
-第三\ignorespaces 章
-) [7
-
-
-
-] (C:\Users\lism\Desktop\lism_final_paper\chapters/improve_CS.tex [8
-
-
-
-]
+ <figures/p2_3.eps> [11]
+File: figures/p3_6.eps Graphic file (type eps)
+ <figures/p3_6.eps>) [12]
+(C:\Users\lism\Desktop\lism_final_paper\chapters/improve_CS.tex
 第四\ignorespaces 章
 File: figures/fig.eps Graphic file (type eps)
 <figures/fig.eps>
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [9])
-[10] (C:\Users\lism\Desktop\lism_final_paper\chapters/low_complexity.tex
+ [13
+
+
+
+])
+[14] (C:\Users\lism\Desktop\lism_final_paper\chapters/low_complexity.tex
 第五\ignorespaces 章
-[11
+[15
 
 
 
-]) [12] [13] (C:\Users\lism\Desktop\lism_final_paper\chapters/paper_next.tex [1
-4
+]) [16] [17] (C:\Users\lism\Desktop\lism_final_paper\chapters/paper_next.tex [1
+8
 
 
 
 ]
 第六\ignorespaces 章
-) [15] [16
+) [19] [20
 
 
 ]
 No file templet.bbl.
-(C:\Users\lism\Desktop\lism_final_paper\chapters/thanks.tex) [17
+(C:\Users\lism\Desktop\lism_final_paper\chapters/thanks.tex) [21
 
 
 ]
-(C:\Users\lism\Desktop\lism_final_paper\chapters/resume.tex [18
+(C:\Users\lism\Desktop\lism_final_paper\chapters/resume.tex [22
 
 
 
-] [19] [20
+] [23] [24
 
 ])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 26.
@@ -1034,8 +1057,8 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 26.
 (C:\Users\lism\Desktop\lism_final_paper\templet.aux
 (C:\Users\lism\Desktop\lism_final_paper\chapters/abstract.aux)
 (C:\Users\lism\Desktop\lism_final_paper\chapters/general.aux)
-(C:\Users\lism\Desktop\lism_final_paper\chapters/general_CS.aux)
 (C:\Users\lism\Desktop\lism_final_paper\chapters/general_LTV.aux)
+(C:\Users\lism\Desktop\lism_final_paper\chapters/general_CS.aux)
 (C:\Users\lism\Desktop\lism_final_paper\chapters/improve_CS.aux)
 (C:\Users\lism\Desktop\lism_final_paper\chapters/low_complexity.aux)
 (C:\Users\lism\Desktop\lism_final_paper\chapters/paper_next.aux)
@@ -1050,16 +1073,16 @@ Package rerunfilecheck Warning: File `templet.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `templet.out':
-(rerunfilecheck)             Before: 502BD97408E7F65F94CF9BD3DB910DA8;4467
-(rerunfilecheck)             After:  0D2AFAD5826E73B040ADCCD82E3F4C62;2138.
+(rerunfilecheck)             Before: C663BF9DC1A27F1DAADC2409B080C71A;5598
+(rerunfilecheck)             After:  976FF7A396C82A03160434EF3FEAC1BB;2651.
  ) 
 Here is how much of TeX's memory you used:
- 16907 strings out of 495355
- 274226 string characters out of 3183883
- 348153 words of memory out of 3000000
- 19600 multiletter control sequences out of 15000+200000
- 82164 words of font info for 274 fonts, out of 3000000 for 9000
+ 17025 strings out of 495355
+ 276322 string characters out of 3183883
+ 349888 words of memory out of 3000000
+ 19712 multiletter control sequences out of 15000+200000
+ 82460 words of font info for 275 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 48i,24n,47p,956b,947s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,24n,47p,956b,952s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on templet.dvi (42 pages, 130460 bytes).
+Output written on templet.dvi (46 pages, 159412 bytes).

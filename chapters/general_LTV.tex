@@ -1,12 +1,163 @@
 
-\chapter{基于压缩感知的双选信道信道估计}
-研究生学位论文必须是学位申请者本人在导师的指导下独立完成的学术成果，要求立论正确，推理严谨，数据可靠，层次分明，文字通畅，不得抄袭和剽窃他人成果。研究生学位论文的撰写语言为中文和英文两种，硕士学位论文篇幅一般不低于~3~ 万字，博士学位论文篇幅一般不低于~5~ 万字。
+\chapter{双选信道与线性时变系统}
+无线通信系统通过电磁波传输信号。电磁波在空间传播过程中，会发生衰减；在障碍物表面会发生发射、散射、绕射等现象；因为发射端、接收端、障碍物的相对移动，会产生多普勒效应；电磁波的物理特性决定了无线信道的复杂性。
 
-研究生学位论文中使用的术语、符号、代号必须全文统一并符合规范化要求，计量单位一律采用国务院~1984~年~2~月~27~日发布的《中华人民共和国法定计量单位》标准。
+\section{双选信道}
+
+\subsection{频率选择性}
+
+因为传播环境中存在的树木，建筑等障碍物，会对电磁波造成散射，导致在接收端接收到通过不同路径传播过来的波形，称为多径现象。不同路径的传播距离不同，到达接收机的时间有先后，因为发射端发送一个脉冲，在接收端会接收到一系列展宽的脉冲。
+
+\begin{figure}[!h]
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[height=5cm]{figures/p3_4.eps}\\
+\caption{多径效应}
+\end{figure}
+
+假设仅存在两条传播路径，时延分别为$\tau_1$和$\tau_2$，发送信号为$s(t)$，则接受信号可表示为
+
+\begin{equation}
+r(t) = h_1s(t-\tau_1)+h_2s(t-\tau_2)
+\end{equation}
+式中$h_p=\left|h_p\right|e^{j\phi_p}$为路径$p$的复衰减因子。
+
+对接收信号进行傅里叶变换$R\left( f \right) = \int_{ - \infty }^\infty  {r\left( t \right)} {e^{ - j2\pi ft}}dt$，则有
+
+\begin{equation} \label{eq3_2}
+\left|R(f)\right|=\left|S(f)\right|\sqrt{\left|h_1\right|^2+\left|h_2\right|^2+2\left|h_1\right|\left|h_1\right|cos(2\pi(\tau_1-\tau_2)f-(\phi_1-\phi_2))}
+\end{equation}
+
+\begin{figure}[!h]
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[height=10cm]{figures/p3_5.eps}\\
+\caption{不同$\tau$ 与 $h$对$\left|R(f)\right|$的影响}
+\label{p2_2}
+\end{figure}
+
+从上图可以看出，多径效应会造成频率选择性，即不同的频率有不同的衰减特性。而且，当不同路径时延较大时且不同路径衰减相差较小时，这种频率选择性会更加明显。下图是一个频率选择性无线信道示意图
+
+\begin{figure}[!h] \label{p2_3}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[height=5cm]{figures/p3_1.eps}\\
+\caption{频率选择性}
+\end{figure}
+
+\subsection{时间选择性}
+
+无线系统中，发射器，接受器，散射体具有相对移动时，无线信号会受到多普勒效应的影响，从而产生频率偏移。
+
+假设无散射体存在（即无多径）的情况下，发送信号为频率为$f_c$正弦波，发射机静止，接收机相对发射机运动，相对速度为$v$，则接收到的正弦波频率为
+
+\begin{equation}
+(1-\frac{vcos(\phi)}{c+vcos(\phi)})f_c \approx (1-\frac{vcos(\phi)}{c})f_c
+\end{equation}
+式中，$\phi$为电磁波与接收机移动方向的夹角，$c$为光速。实际中，相对移动速度$v \ll c$，所以上式成立。对于一般传输信号$s(t)$，和它的傅里叶变化$S(f)$，则有
+
+\begin{equation}\label{eq3_4}
+\left\{ \begin{array}{l}
+r(t) = \frac{h}{\alpha }s(\frac{t}{\alpha }),\quad \alpha  = 1 - \frac{{vcos(\phi )}}{c}\\
+R(f) = hS(\alpha f)
+\end{array} \right.
+\end{equation}
+所以多普勒效应导致时间/频率展缩。实际中，传输信号$s(t)$被调制在频率为$f_c$的载频上，带宽为B，则有$B \ll f_c$，因此$\alpha f = f-\frac{vcos(\phi)}{c}f \approx f-\frac{vcos(\phi)}{c}f_c$，因此式(\ref{eq3_4})可改写为
+
+\begin{equation}
+\left\{ \begin{array}{l}
+r(t) \approx hs(t)e^{j2\pi \nu t},\quad \nu  = \frac{{vcos(\phi )}}{c}f_c\\
+R(f) \approx hS(f-\nu)
+\end{array} \right.
+\end{equation}
+所以多普勒效应导致了频移，而且偏移量$\nu$正比于速度$v$和载波频率$f_c$。
+
+类比于多径效应，我们可以考虑两条路径具有相同的时延$tau_0$，但多普勒频移不同，分别为$\nu_1$和$\nu_2$，则频域接收信号为
+\begin{equation}
+R(f) = [h_1S(f-\nu_1)+h_2S(f-\nu_2)]e^{-j2\pi \tau_0 f}
+\end{equation}
+
+时域接收信号$r(t)$有
+\begin{equation}
+|r(t)| = |s(t-\tau_0)|\sqrt{|h_1|^2+|h_2|^2+2|h_1||h_2|cos(2\pi(\nu_1-\nu_2)(t-\tau_0)+(\phi_1-\phi_2))}
+\end{equation}
+
+则将式(\ref{eq3_2})中$f$替换为$t$，频域换为时域，图\ref{p2_2}则表示多普勒频移$\nu$，信道增益$h$与时域接收信号$r(t)$之间的关系。
+
+\begin{figure}[!h] \label{p2_4}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[height=5cm]{figures/p3_2.eps}\\
+\caption{时间选择性信道}
+\end{figure}
+
+因此多普勒频移会造成信道的时间选择性。图\ref{p2_4}是一个只具有时间选择性的无线信道。
+
+
+
+\subsection{双选信道}
+在一些无线通信环境中，同时存在多径效应和相对移动，频率选择性和时间选择性会同时存在，此时无线信道具有双选特性。此时，无线信道的特性如下图所示：
+
 
 \section{线性时变系统}
 
+对于多径信道，我们可以将无线信道看做线性时不变系统。但对于时变信道，线性时不变系统模型不再适用，线性时变模型更符合实际情况。
+
+\subsection{时延-多普勒域-扩展函数}
+
+假设一个LTV信道$\mathbf{H}$具有$p$条离散传播路径，则时域接收信号$r(t)$为
+
+\begin{equation} \label{eq2_8}
+r(t) = \sum\limits_{p = 1}^P h_ps(t-\tau_p)e^{j2\pi \nu_p t}
+\end{equation}
+
+式中，$h_p$，$\tau_p$和$\nu_p$分别为第$p$条路径相关的复衰减系数，时延和多普勒频移。
+
+式(\ref{eq2_8})表示的是理想镜面散射情况(理想点散射体)。实际中散射体都是连续的，即
+
+\begin{equation} \label{eq2_9}
+r(t) = \int_{ - \infty }^\infty  {\int_{ - \infty }^\infty  S_H(\tau,\nu)s(t-\tau)e^{j2\pi \nu t}d\tau d\nu }
+\end{equation}
+
+式中加权函数$S_H(\tau,\nu)$发送信号在时间和频率的扩展，因此称为LTV信道$\mathbf{H}$的时延-多普勒域-扩展函数。
+
+则式(\ref{eq2_8})是式(\ref{eq2_9})的特殊情况，此时有
+\begin{equation} \label{eq2_10}
+S_H(\tau,\nu) = \sum\limits_{p = 1}^P h_p {\delta}(t-\tau_p)\delta (\nu - \nu_p)
+\end{equation}
+
+式(\ref{eq2_9})表示了输入信号$s(t)$与接收信号$r(t)$之间的时域关系，其对偶的频域形式为
+
+\begin{equation} \label{eq2_11}
+R(f) = \int_{ - \infty }^\infty  {\int_{ - \infty }^\infty  S_H(\tau,\nu)s(f-\nu)e^{-j2\pi \tau (f-\nu)}d\tau d\nu }
+\end{equation}
+
+\subsection{时频域-传递函数}
+LTV信道的时频选择特性可以由联合时频域(TF)传递函数刻画
+\begin{equation} \label{eq2_12}
+L_H(t,f)\mathop {\rm{ = }}\limits^{def} \int_{ - \infty }^\infty  {\int_{ - \infty }^\infty  S_H(\tau,\nu)e^{-j2\pi(f\tau-t\nu)}d\tau d\nu }
+\end{equation}
+类比于时不变系统中信道冲击响应$h(t)$和信道频域传递函数$H(f)$之间一维傅里叶变换关系$H(f)=\int_{ - \infty }^\infty{h(\tau)e^{-j2\pi ft}}$，时频域传递函数$L_H{t,f}$与时延-多普勒域-扩展函数之间为二维傅里叶变换。
+
+\begin{figure}[!h] \label{p2_5}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[height=5cm]{figures/p3_3.eps}\\
+\caption{时频域传递函数}
+\end{figure}
+
+同样，类似于时不变系统，通过TF传递函数也可以得到信道的输入/输出关系
+\begin{equation} \label{eq2_13}
+r(t)= \int_{ - \infty }^\infty  {L_H(t,f)S(f)e^{j2\pi tf}df }
+\end{equation}
+
+\subsection{时延-时变脉冲响应}
+
+将式(\ref{eq2_9})改写为如下形式
+\begin{equation} \label{eq2_14}
+r(t) = \int_{ - \infty }^\infty  {\int_{ - \infty }^\infty  S_H(\tau,\nu)s(t-\tau)e^{j2\pi \nu t}d\tau d\nu }
+\end{equation}
+
 \section{多载波系统}
 
-\section{使用压缩感知进行信道估计}
 

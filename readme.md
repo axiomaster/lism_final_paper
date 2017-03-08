@@ -1,3 +1,3 @@
 ```
-bmeps p2_1.jpg p2_1.eps
+bmeps -c p2_1.jpg p2_1.eps
 ```

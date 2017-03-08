@@ -1,10 +1,16 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces p范数与稀疏性的关系}}{4}{figure.2.1}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces 稀疏向量的压缩感知原理示意图}}{5}{figure.2.2}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces 可稀疏表示向量的压缩感知原理示意图}}{5}{figure.2.3}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces 多径效应}}{3}{figure.2.1}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces 不同$\tau $ 与 $h$对$\left |R(f)\right |$的影响}}{4}{figure.2.2}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces 频率选择性}}{4}{figure.2.3}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces 时间选择性信道}}{5}{figure.2.4}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces 时频域传递函数}}{7}{figure.2.5}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces p范数与稀疏性的关系}}{10}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces 稀疏向量的压缩感知原理示意图}}{11}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces 可稀疏表示向量的压缩感知原理示意图}}{11}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces 时频域传递函数}}{12}{figure.3.4}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces 插图示例}}{9}{figure.4.1}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces 插图示例}}{13}{figure.4.1}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
