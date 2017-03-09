@@ -41,7 +41,7 @@ r(t) = h_1s(t-\tau_1)+h_2s(t-\tau_2)
 \begin{figure}[!h] \label{p2_3}
   \centering
   % Requires \usepackage{graphicx}
-  \includegraphics[height=5cm]{figures/p3_1.eps}\\
+  \includegraphics[height=6cm]{figures/p3_1.eps}\\
 \caption{频率选择性}
 \end{figure}
 
@@ -82,12 +82,12 @@ R(f) = [h_1S(f-\nu_1)+h_2S(f-\nu_2)]e^{-j2\pi \tau_0 f}
 |r(t)| = |s(t-\tau_0)|\sqrt{|h_1|^2+|h_2|^2+2|h_1||h_2|cos(2\pi(\nu_1-\nu_2)(t-\tau_0)+(\phi_1-\phi_2))}
 \end{equation}
 
-则将式(\ref{eq3_2})中$f$替换为$t$，频域换为时域，图\ref{p2_2}则表示多普勒频移$\nu$，信道增益$h$与时域接收信号$r(t)$之间的关系。
+则将式(\ref{eq3_2})中$f$替换为$t$，频域换为时域，图\ref{p2_2}则表示多普勒频移$\nu$，信道增益$h$ 与时域接收信号$r(t)$之间的关系。
 
 \begin{figure}[!h] \label{p2_4}
   \centering
   % Requires \usepackage{graphicx}
-  \includegraphics[height=5cm]{figures/p3_2.eps}\\
+  \includegraphics[height=7cm]{figures/p3_2.eps}\\
 \caption{时间选择性信道}
 \end{figure}
 
@@ -119,7 +119,15 @@ r(t) = \sum\limits_{p = 1}^P h_ps(t-\tau_p)e^{j2\pi \nu_p t}
 r(t) = \int_{ - \infty }^\infty  {\int_{ - \infty }^\infty  S_H(\tau,\nu)s(t-\tau)e^{j2\pi \nu t}d\tau d\nu }
 \end{equation}
 
-式中加权函数$S_H(\tau,\nu)$发送信号在时间和频率的扩展，因此称为LTV信道$\mathbf{H}$的时延-多普勒域-扩展函数。
+式中加权函数$S_H(\tau,\nu)$发送信号在时间和频率的扩展，因此称为LTV信道$\mathbf{H}$的时延-多普勒域- 扩展函数。
+
+下图是一个时延-多普勒域-扩展函数示意图
+\begin{figure}[!h] \label{p2_5_1}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[height=7cm]{figures/p3_8.eps}\\
+\caption{时延-多普勒域-扩展函数}
+\end{figure}
 
 则式(\ref{eq2_8})是式(\ref{eq2_9})的特殊情况，此时有
 \begin{equation} \label{eq2_10}
@@ -142,7 +150,7 @@ L_H(t,f)\mathop {\rm{ = }}\limits^{def} \int_{ - \infty }^\infty  {\int_{ - \inf
 \begin{figure}[!h] \label{p2_5}
   \centering
   % Requires \usepackage{graphicx}
-  \includegraphics[height=5cm]{figures/p3_3.eps}\\
+  \includegraphics[height=7cm]{figures/p3_3.eps}\\
 \caption{时频域传递函数}
 \end{figure}
 
@@ -155,9 +163,83 @@ r(t)= \int_{ - \infty }^\infty  {L_H(t,f)S(f)e^{j2\pi tf}df }
 
 将式(\ref{eq2_9})改写为如下形式
 \begin{equation} \label{eq2_14}
-r(t) = \int_{ - \infty }^\infty  {\int_{ - \infty }^\infty  S_H(\tau,\nu)s(t-\tau)e^{j2\pi \nu t}d\tau d\nu }
+r(t) = \int_{ - \infty }^\infty  \left[{ {\int_{ - \infty }^\infty  S_H(\tau,\nu)e^{j2\pi \nu t}d\nu }}\right]  s(t-\tau)d\tau
 \end{equation}
 
-\section{多载波系统}
+式中，$h(t,\tau)=\int_{ - \infty }^\infty S_H(\tau,\nu)e^{j2\pi \nu t}d\nu$称为LTV信道的时变脉冲响应。
+
+可知式(\ref{eq2_8})表示的镜面反射对应的时变脉冲响应为
+\begin{equation} \label{eq2_15}
+h(t,\tau) = \sum\limits_{p = 1}^P h_p\delta (\tau-\tau_p(t))e^{j2\pi \nu_p t}
+\end{equation}
+
+下图是一个双选信道时变脉冲响应的示意图
+
+\begin{figure}[!h] \label{p2_6}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[height=10cm]{figures/p3_7.eps}\\
+\caption{时变脉冲响应}
+\end{figure}
+
+总结以上，可得LTV系统存在如下关系
+\begin{equation} \label{eq2_16}
+\begin{aligned}
+& S_H(\tau,\nu) = \int_{ - \infty }^\infty  h(t,\tau)e^{-j2\pi \nu t}dt \\
+& L_H(t,f) = \int_{ - \infty }^\infty  h(t,\tau)e^{-j2f \tau}d\tau
+\end{aligned}
+\end{equation}
+
+\section{正交频分复用系统}
+
+多载波的基本思想是将传输比特流分成多个比特流，调制在不同的子载波上，每个子载波对应的子信道带宽远远小于系统总带宽。选择子载波个数使得子信道带宽小于信道的相干带宽，则每个子信道经历的衰落是相对平坦的。
+
+假设多载波系统中相干带宽为$B_c$，子信道带宽为$B_N$，子载波个数为$N$，则各子载波上的叠加信号为
+\begin{equation} \label{eq2_15}
+s(t)= \sum\limits_{i = 1}^N s_ig(t)cos(2\pi f_i t+\phi_i)
+\end{equation}
+
+式中,$s_i$为调制符号；$g(t)$为脉冲成型滤波器，一般选用升余弦滚降滤波器；$f_i$为第$i$个子载波对应的频率；当取$B_N=B_c$时，几乎没有ISI。
+
+正交频分复用（OFDM）在多载波的基础上，使子载波间的频谱重叠，但保持相互正交，进一步提高了频谱利用率。下图是一个OFDM通信系统框图
+
+\begin{figure}[!h] \label{p_ofdm}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[height=6cm]{figures/ofdm.eps} \\
+\caption{OFDM系统框图}
+\end{figure}
+
+
+OFDM数字实现一般使用IFFT，插入导频后的频域信号为$S[k]$，IFFT之后的时域信号为
+\begin{equation} \label{eq2_15}
+s[n]= \sum\limits_{k = 0}^{N-1} S[k]e^{j2\pi nk/N}
+\end{equation}
+
+假设信道最大多径时延为$\tau_{max}$，则要加入长度为$L_{cp} > \tau_max$的保护间隔(GI)，避免符号间干扰。保护间隔一般取循环前缀(CP)的形式，即将OFDM符号后面的$L_{cp}$个符号复制到最前面，形成$L_{cp}+N$ 的新序列$s_{cp}[n]$。
+
+\begin{figure}[!h] \label{p_cp}
+  % Requires \usepackage{graphicx}
+  \includegraphics[height=2cm]{figures/cp.eps} \\
+\caption{循环前缀示意图}
+\end{figure}
+
+发送信号经过信道后，接收信号可表示为
+
+\begin{equation} \label{eq2_15}
+r_{cp}[n]= \sum\limits_{p = 1}^{P} h[n,p]s_{cp}[n-\tau_p] +w[n]
+\end{equation}
+
+式中$h[n,p]$表示第$p$条径第$n$个符号时的信道。
+
+移除CP，FFT之后，得到频域接受信号
+\begin{equation} \label{eq2_15}
+R[k] = \frac{1}{N} \sum\limits_{n = 0}^{N-1} S[k]e^{-j2\pi nk/N}
+\end{equation}
+
+
+\end{figure}
+
+
 
 
