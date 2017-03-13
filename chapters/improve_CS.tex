@@ -1,28 +1,152 @@
 
 \chapter{改善压缩感知信道估计的方法}
 
-图：包括曲线图、示意图、流程图、框图等。图序号一律用阿拉伯数字分章依序编码，如：图~1.3~、图~2.11~。
-
-每一个图应有简短确切的图名，连同图序号置于图的正下方。图名称、图中的内容字号为五号，中文字体为宋体，英文字体为~Times New Roman~，行距一般为单倍行距。图中坐标上标注的符号和缩略词必须与正文保持一致。引用图应在图题右上角标出文献来源；曲线图的纵横坐标必须标注“量、标准规定符号、单位”，这三者只有在不必要标明（如无量纲等）的情况下方可省略。
 
 \section{过采样技术}
 
-图与正文之间一般应空一行。
+
+
+\section{改进导频设计}
+
+在第\ref{sec2_-5_1}节，我们得到了双选信道下信道估计的压缩感知形式
+
+\begin{equation}
+\hat{H_p} = \mathbf{SU\alpha}
+\end{equation}
+
+式中，$\hat{H_p}$为导频处的信道估计值，在压缩感知信道估计前已经得到；$\mathbf{U}$为二维傅里叶变换矩阵，为确定值；$\alpha$ 为待估计值；$\mathbf{S}$为导频选取矩阵。在压缩感知框架下，传感矩阵$\mathbf{T = SU}$。由\ref{2_4_3} 节分析可知，压缩感知估计的效果由测量矩阵$\mathbf{T}$的性质决定，而测量矩阵由导频选取矩阵$\mathbf{S}$决定。
+
+\subsection{等间隔导频}
+
+在\ref{sec2_3_1}节所示的传统信道估计方法中，等间隔导频已被证明具有最好的估计性能。下面我们证明等间隔导频并不适用于压缩感知信道估计。
+
+假设$\mathbf{W}$是$N$维傅里叶变换矩阵，则
+
+\begin{equation}
+{\bf{W}} = \left[ {\begin{array}{*{20}{c}}
+1&1&1& \cdots &1\\
+1&w&{{w^2}}& \cdots &{{w^{N - 1}}}\\
+1&{{w^2}}&{{w^4}}& \cdots &{{w^{2\left( {N - 1} \right)}}}\\
+ \vdots & \vdots & \vdots & \ddots & \vdots \\
+1&{{w^{N - 1}}}&{{w^{2\left( {N - 1} \right)}}}& \cdots &{{w^{\left( {N - 1} \right)\left( {N - 1} \right)}}}
+\end{array}} \right]
+\end{equation}
+
+式中$w = \frac{1}{\sqrt{N}}e^{-j2\pi /N}$
+
+假定等均匀导频间隔为$q$，且可以被$N$整除，所以有$N=Pq$。为了方便公式推导，我们假设起始导频从1开始，所以传感矩阵$\mathbf{T}$为
+
+\begin{equation}
+{\bf{T = SW}} = \left[ {\begin{array}{*{20}{c}}
+1&w&{{w^2}}& \cdots &{{w^{N - 1}}}\\
+1&{{w^q}}&{{w^{2q}}}& \cdots &{{w^{\left( {N - 1} \right)q}}}\\
+1&{{w^{2q}}}&{{w^{4q}}}& \cdots &{{w^{2\left( {N - 1} \right)q}}}\\
+ \vdots & \vdots & \vdots & \ddots & \vdots \\
+1&{{w^{\left( {P - 1} \right)q}}}&{{w^{2\left( {P - 1} \right)q}}}& \cdots &{{w^{\left( {N - 1} \right)\left( {P - 1} \right)q}}}
+\end{array}} \right]
+\end{equation}
+
+则矩阵中第$i+1$列和第$i+1+P$列为
+\begin{equation}
+{\tau _{i + 1}} = \left[ {\begin{array}{*{20}{c}}
+w\\
+{{w^{iq}}}\\
+{{w^{2iq}}}\\
+ \vdots \\
+{{w^{\left( {P - 1} \right)iq}}}
+\end{array}} \right]
+， \quad
+{\tau _{i + 1 + P}} = \left[ {\begin{array}{*{20}{c}}
+w\\
+{{w^{\left( {i + P} \right)q}}}\\
+{{w^{2\left( {i + P} \right)q}}}\\
+ \vdots \\
+{{w^{\left( {P - 1} \right)\left( {i + P} \right)q}}}
+\end{array}} \right] = \left[ {\begin{array}{*{20}{c}}
+w\\
+{{w^{iq}} \cdot {w^{Pq}}}\\
+{{w^{2iq}} \cdot {w^{2Pq}}}\\
+ \vdots \\
+{{w^{\left( {P - 1} \right)iq}} \cdot {w^{\left( {P - 1} \right)Pq}}}
+\end{array}} \right]
+\end{equation}
+因为$N=Pq$，所以$w^{Pq} = 1$，所以$\tau_{i+1} = \tau{i+1+P}$，即相差为P的列完全相关。所以矩阵相关系数$\mu(\mathbf{T})=1$。
+
+对于非整除情况，第$i$列与周期附近的列强相关，相关系数也很大。从第\ref{2_4_3}节的分析可知，均匀导频不适用于压缩感知信道估计。
+
+\subsection{现有导频优化准则的不足}
+
+上节分析了传统估计方法中最优的等间距导频，证明其不适用于压缩感知信道估计。
+
+根据压缩感知理论，随机导频可以大概率满足约束等距条件，因此也是日常使用最多的导频方式。但在实际中，需要固定导频图案，而且随机导频的性能具有不确定性，需要做导频优化。
+
+目前在压缩感知中，使用最多的导频优化方案，就是最小化测量矩阵的互相关系数。但测量矩阵的互相关系数，与信道估计性能，并没有单调相关性。仿真结果如下：
 
 \begin{figure}[!h]
   \centering
   % Requires \usepackage{graphicx}
-  \includegraphics[height=5cm ,width=5cm]{figures/fig.eps}\\
-\caption{插图示例}
+  \includegraphics[height=7cm]{figures/p3_1_1.eps}\\
+\caption{$\mu(\mathbf{T}$)与估计性能的关系}
 \end{figure}
 
-公式：正文中的公式、算式、方程式等必须编排序号，序号一律用阿拉伯数字分章依序编码，如：(3-32)、 (6-21)。
+随机生成50个矩阵互相关系数不同的导频图案，图中每个点代表一个导频图案。通过仿真，得到[5 10 15 20]dB处的信道估计MSE性能，取平均后得到平均MSE，为图中纵轴。
 
-对于较长的公式，另起行居中横排，只可在符号处（如：+、-、*、/、$<$$>$等）转行。公式序号标注于该式所在行（当有续行时，应标注于最后一行）的最右边。连续性的公式在“=”处排列整齐。大于~999~的整数或多于三位的小数，一律用半个阿拉伯数字符的小间隔分开；小于~1~的数应将~0~置于小数点之前。公式的行距一般为单倍行距。
+从图中可以看出，相关系数 与MSE具有正相关特性，但不具有单调性。因此，具有更小 的导频相比更大 的导频并不一定具有更好的MSE性能。因此，使用 导频优化准则，在有限的仿真内，并不一定能得到最好的导频。
 
-\section{改进导频设计}
+\subsection{对导频优化准则的评价标准}
 
+在找到理想的导频优化准则之前，可以猜想理想导频具有的特性。好的导频优化准则，它的特性可以在仿真前指示出导频的信道估计性能，最好与信道估计性能具有单调性关系。归一化均方误差可以描述这种趋势。
 
+归一化均方误差定义如下：
+
+\begin{equation}
+NMSE\left( y \right) = 10{\log _{10}}\frac{{\sum\limits_{i = 1}^n {{{\left| {f\left( x \right) - y} \right|}^2}} }}{{\sum\limits_{i = 1}^n {{{\left| {f\left( x \right)} \right|}^2}} }}
+\end{equation}
+
+$f(x)$是真值，y是真值的估计值。
+
+在导频设计中，真值的函数并不确定，可以使用拟合函数来代替。NMSE值越小，说明准则单调性越好，因此设计的导频越好。
+\begin{figure}[!h]
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[height=7cm]{figures/p3_2_1.eps}\\
+\caption{多载波系统框图}
+\end{figure}
+
+图中包含5000个点，每个点代表一个导频图案。图中黑线是所有点的拟合结果。仿真图显示了导频图案相对拟合结果的离散性。
+
+多项式拟合中，多项式阶数越高，拟合的准确性越好。但使用4次多项式，能够可以看到明显的过拟合现象，因此图中使用3次多项式拟合。
+
+图中拟合的函数为$f\left( x \right) =  - 8.56{e^{ - 4}}{x^3} + 8.7{e^{ - 4}}{x^2} + 1.7{e^{ - 4}}x + 8.9{e^{ - 5}}$。将$\mu(\mathbf{T})$作为$x$值，MSE作为$y$值代入NMSE中，计算的其值为-15.0381。
+
+\subsection{基于最大特征值的导频优化准则}
+
+矩阵互相关系数定义为测量矩阵中，列相关系数的最大值。因此矩阵互相关系数并没有表征出矩阵的所有特征。但矩阵特征值可以。
+
+测量矩阵$bf{T}$并不是方阵，因此不存在特征值，可以使用Gram矩阵。Gram矩阵定义为$bf{G=T^{H}T}$，则Gram矩阵为对称矩阵，矩阵中所有元素均为$\bf{T}$的列相关系数。
+
+\begin{figure}[!h]
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[height=7cm]{figures/p3_3_1.eps}\\
+\caption{多载波系统框图}
+\end{figure}
+
+上图的拟合函数为$f\left( x \right) = 1.7{e^{ - 4}}{x^3} - 3.7{e^{ - 4}}{x^2} + 3.0{e^{ - 4}}x - 7.0{e^{ - 5}}$，将$\lambda_{max}$代入NSME定义式中，得到NMSE值为-19.5372，这个值比基于$\mu(\bf(T))$的值小，最小化最大特征值比最小化$\mu(\bf(T))$准则更好。
+
+\subsection{基于特征值方差的导频优化准则}
+
+Gram矩阵为对称矩阵，对角线元素为测量矩阵T的列自相关系数，所以都为1.特征值平方和也为定值，$\sum {{\lambda _i} = tr\left( {{G^2}} \right)} $。
+
+因此，可以推断特征值的分布特性与MSE性能的关系。
+\begin{figure}[!h]
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[height=7cm]{figures/p3_4_1.eps}\\
+\caption{多载波系统框图}
+\end{figure}
+
+上图中，拟合函数为$f\left( x \right) =  - 8.3{e^{ - 4}}{x^3} - 1.0{e^{ - 4}}{x^2} - 1.7{e^{ - 4}}x + 2.3{e^{ - 5}}$，代入NMSE中可得NMSE值为-22.9435.所以使用特征值方差，要好于矩阵互相关系数和最大特征值。
 
 \section{改善基}
 
@@ -115,7 +239,7 @@ r[n] =\sum\limits_{m = -\infty}^{\infty} h[n,m]s[n-m] +z[n]
 x_{l,k} = H_{l,k}a_{l,k} + z_{l,k}
 \end{equation}
 
-在第\ref{sec_tau_nu}节我们定义了双选信道的时延-多普勒域-扩展函数$S_h[\tau,\nu]$，并在第\ref{sec_tau_t}中推导了它与时变脉冲响应$h(t,\tau)$之间的关系。这里我们定义离散-时延-多普勒域-扩展函数$S_h[m,i]$
+在第\ref{sec_tau_nu}节我们定义了双选信道的时延-多普勒域-扩展函数$S_h[\tau,\nu]$，并在第\ref{sec_tau_t}中推导了它与时变脉冲响应$h(t,\tau)$ 之间的关系。这里我们定义离散-时延-多普勒域-扩展函数$S_h[m,i]$
 
 \begin{equation} \label{eq3_22}
 {S_h}\left[ {m,i} \right]\mathop  = \limits^\Delta \frac{1}{NL} \sum\limits_{n = 0}^{NL} h[n,m]e^{-j2\pi in/NL}
