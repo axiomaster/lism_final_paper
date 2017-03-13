@@ -22,52 +22,150 @@
 
 \section{改进导频设计}
 
-公式与正文之间一般应空一行。
 
-\begin{equation}
-\begin{split}
-{X_{e1}}\left( {s,{n_1},{k_1}} \right) &= \left( {\begin{array}{*{20}{c}}
-{{k_1}}\\
-s
-\end{array}} \right)\frac{{{n_1}!}}{{\left( {{n_1} - s} \right)!}}\sum\nolimits_{v = 0}^{\min \left( {{n_1} - s,{k_1} - s} \right)} {{{\left( { - 1} \right)}^v}\left( {\begin{array}{*{20}{c}}
-{{k_1} - s}\\
-v
-\end{array}} \right)} \\
-& \times \frac{{\left( {{n_1} - s} \right)!}}{{\left( {{n_1} - s - v} \right)!}}{\left( {{n_1} - s - v} \right)^{{k_1} - s - v}}
-\end{split}
-\end{equation}
-~\par
-表：包括分类项目和数据，一般要求分类项目由左至右横排，数据从上到下竖列。
-
-分类项目横排中必须标明符号或单位，竖列的数据栏中不要出现“同上”、“同左”等词语，一律要填写具体的数字或文字。表序号一律用阿拉伯数字分章依序编码，如：表~2.5~、表~10.3~。
-
-每一个表格应有简短确切的题名，连同表序号置于表的正上方。表名称、表中的内容居中排列，字号为五号，中文字体为宋体，英文字体为~Times New Roman~，行距一般与正文保持一致。表格线统一用单线条，磅值为~0.5~磅。
 
 \section{改善基}
 
-表格与正文之间一般应空一行。
+\subsection{多载波系统}
+下图是一个多载波系统框图，包括子载波调制，内插滤波器，物理信道，抗混叠滤波器，子载波解调5部分。系统输入为星座映射后的符号，输出为接收符号。
+\begin{figure}[!h] \label{p_mc}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[height=5cm]{figures/mc_system.eps}\\
+\caption{多载波系统框图}
+\end{figure}
 
-\begin{table}[!htbp]
-\renewcommand{\arraystretch}{1.5}
-\zihao{5}\caption{表格示例}
-\begin{tabular}{|c|c|c|c|c|c|c|}
-\hline
-\multirow{2}{*}{\backslashbox{电性能参数}{馈电方式}}&\multirow{2}{*}{探针} & \multirow{2}{*}{环形缝隙}  & \multicolumn{2}{c|}{探针和缝隙} & \multicolumn{2}{c|}{缝隙和CPW} \\
-\cline{4-7} & & &  探针 & 缝隙 & 缝隙 & CPW \\
-\hline
-谐振频率 & 9.5 GHz & 8.8 GHz & 9.4 GHz & 9.8 GHz & 9.2 GHz&9.3 GHz\\
-\hline
-\tabincell{c}{带宽 \\ $|S_{11}|$ $<$-10 dB）}& 7.3\% & 4.5\% & 6.9\% & 6.8\% & 4.9\% & 5.3\% \\
-\hline
-\tabincell{c}{隔离度\\（带内最差）} & -16.5 dB & -17 dB & \multicolumn{2}{c|}{-31 dB} & \multicolumn{2}{c|}{-22 dB} \\
-\hline
-方向图 & 不对称 & 对称 & 不对称 & 对称 & 对称 & 对称 \\
-\hline
-交叉极化电平 & 高 & 低 & 高 & 低 & 低 &低 \\
-\hline
-\end{tabular}
-\end{table}
-\zihao{-4}\setlength{\baselineskip}{20pt}
-计量单位：学位论文中出现的计量单位一律采用国务院~1984~年~2~月~27~日发布的《中华人民共和国法定计量单位》标准。
+假设系统的子载波个数为$K$，添加CP后OFDM符号长度为$N$，则CP长度为$N-K$。每个OFDM帧中包含符号数为$L$。
+
+子载波调制器输出的离散信号为
+
+\begin{equation}
+s[n] = \sum\limits_{l = 0}^{L-1} \sum\limits_{k = 0}^{K-1} a_{l,k}g_{l,k}[n]
+\end{equation}
+
+式中输入符号$a_{l,k}$下标表示第$l$个符号和第$k$个子载波，$g[n]$是发送脉冲，
+\begin{equation}
+g\left[ n \right] = \left\{ \begin{array}{l}
+1,0 \le n \le N - 1\\
+0,{\rm{otherwise}}
+\end{array} \right.
+\end{equation}
+
+$g_{l,k}[n]$是第$l$个符号和第$k$个子载波对应的子载波调制形式，定义如下
+\begin{equation}
+{g_{l,k}}[n]\mathop {\rm{ = }}\limits^\Delta  g[n-lN]e^{j2\pi k(n-lN)/K}
+\end{equation}
+
+离散信号$s[n]$通过内插滤波器成为连续信号$s(t)$
+\begin{equation}
+s(t) = \sum\limits_{n = -\infty}^{\infty} s[n]f(t-nT_{s})
+\end{equation}
+
+$f(t)$为插值滤波器，$T_s$为采样间隔。假设$f(t)$为理想滤波器
+
+\begin{equation}
+f(t) = \frac{1}{\sqrt{T_s}}sinc(\pi t/T_s)
+\end{equation}
+
+对于双选信道，信道时变脉冲响应为$h(t,\tau)$,时域噪声为$z(t)$，信道输出为
+
+\begin{equation}
+r(t) = \int_{ - \infty }^\infty  h(t,\tau)s(t-\tau)d\tau + z(t)
+\end{equation}
+
+经过抗混叠滤波器后，得到离散信号
+\begin{equation}
+r[n] = \int_{ - \infty }^\infty  r(t)f(t-nT_s)dt
+\end{equation}
+
+多载波解调时，将接受序列与接收脉冲$\gamma[n]$做内积，得到接收符号
+\begin{equation}
+x_{l,k} = \langle r,\gamma_{l,k} \rangle = \sum\limits_{n = -\infty}^{\infty} r[n]\gamma_{l,k}^{*}[n]
+\end{equation}
+
+发送脉冲$g[n]$对应的$\gamma[n]$定义为
+\begin{equation}
+\gamma \left[ n \right] = \left\{ \begin{array}{l}
+1,N-K \le n \le N - 1\\
+0,{\rm{otherwise}}
+\end{array} \right.
+\end{equation}
+
+同多载波调制，$\gamma_{l,k}$为$l$和$k$对应的偏移形式
+\begin{equation}
+{\gamma_{l,k}}[n]\mathop {\rm{ = }}\limits^\Delta  \gamma[n-lN]e^{j2\pi k(n-lN)/K}
+\end{equation}
+
+将图\ref{p_mc}中，内插滤波器，物理信道，抗混叠滤波器等效为离散信道$h[n,m]$，即在第\ref{sec_tau_t}定义的双选信道时变脉冲响应的离散形式
+\begin{equation} \label{eq3_19}
+h[n,m] = \int_{ - \infty }^\infty  n(nT_s,\tau)sinc(\pi(m-\frac{\tau}{T_s}))d\tau
+\end{equation}
+
+式中，通过$T_s$为间隔的采样，时间$t$变为离散序列下标$n$，时延$\tau$变为离散时延$m$, 则物理信道的输入/输出关系可以改写为类似式(\ref{eq2_19}) 的离散形式
+\begin{equation} \label{eq3_20}
+r[n] =\sum\limits_{m = -\infty}^{\infty} h[n,m]s[n-m] +z[n]
+\end{equation}
+
+\subsection{多载波系统等效系统信道}
+
+上一节我们将内插滤波器，抗混叠滤波器和物理信道结合，得到了离散信道。这一节我们推导包含子载波调制、解调在内的多载波系统等效系统信道$H_{l,k}$。
+
+首先，从图\ref{p_mc}中可得到系统信道的输入/输出关系
+\begin{equation}
+x_{l,k} = H_{l,k}a_{l,k} + z_{l,k}
+\end{equation}
+
+在第\ref{sec_tau_nu}节我们定义了双选信道的时延-多普勒域-扩展函数$S_h[\tau,\nu]$，并在第\ref{sec_tau_t}中推导了它与时变脉冲响应$h(t,\tau)$之间的关系。这里我们定义离散-时延-多普勒域-扩展函数$S_h[m,i]$
+
+\begin{equation} \label{eq3_22}
+{S_h}\left[ {m,i} \right]\mathop  = \limits^\Delta \frac{1}{NL} \sum\limits_{n = 0}^{NL} h[n,m]e^{-j2\pi in/NL}
+\end{equation}
+
+式中，$i$表示离散多普绿频移。利用$S_h[m,i]$可以改写式\ref{eq3_20}为
+
+\begin{equation}
+r[n] = \sum\limits_{m = -\infty}^{\infty} \sum\limits_{i=0}^{NL-1}S_h[m,i]s[n,m]e^{j2\pi in/NL}+z[n]
+\end{equation}
+
+至此，我们可以得到多载波系统等效的信道$H_{l,k}$，第\ref{sec_tf}节我们得到了时频域传递函数$L_H(t,f)$，这里为其对应的离散形式
+
+\begin{equation} \label{eq3_24}
+H_{l,k} = \sum\limits_{m = 0}^{K-1} \sum\limits_{i=0}^{L-1} F[m,i]e^{-j2\pi(\frac{km}{K}-\frac{li}{L})}
+\end{equation}
+
+\begin{equation}
+F[m,i]\mathop  = \limits^\Delta S_h[m,i]A_{\gamma,g}^*(m,\frac{i}{N_r})
+\end{equation}
+
+
+式中,$A_{\gamma,g}(m,\xi)$成为互模糊函数，由发送脉冲$g[n]$和接收脉冲$\gamma[n]$决定，定义如下
+
+\begin{equation}
+A_{\gamma,g}[m,\xi] \mathop = \limits^\Delta \sum\limits_{n=-\infty}^{\infty} \gamma[n]g^*[n-m]e^{-j2\pi \xi n}
+\end{equation}
+
+至此，我们使用LTV信道模型得到了将包括多载波调制/解调在内的多载波系统等效信道$H_{l,k}$。
+
+假设物理信道包含$P$条径，对应时延为$\tau_p$，多普勒频移为$\nu_p$，则信道时变脉冲响应如式(\ref{eq2_15})所示，代入式(\ref{eq3_19}) 得到离散时变脉冲响应
+
+\begin{equation}
+h[n,m] = \sum\limits_{p=1}^P h_p e^{j2\pi \nu_p nT_s} sinc(\pi(m-\frac{\tau}{T_s}))
+\end{equation}
+
+将上式代入式(\ref{eq3_22})的离散-时延-时延-多普勒域扩展函数得到
+\begin{equation} \label{eq3_22}
+{S_h}\left[ {m,i} \right]\mathop  = \limits^\Delta \sum\limits_{p = 1}^{P} h_pe^{j\pi(\nu_pT_s-\frac{i}{NL}(NL-1))}\Lambda_p[m,i]
+\end{equation}
+
+式中，
+\begin{equation} \label{eq3_22}
+\Lambda_p[m,i] \mathop = \limits^\Delta sinc(\pi(m-\frac{\tau_p}{T_s}))dir_{NL}(\pi(i-\nu_pT_sNL))
+\end{equation}
+
+\begin{equation} \label{eq3_22}
+dir_N(x) \mathop = \limits^\Delta \frac{1}{N}e^{jx(N-1)/N} \sum\limits_{n = 0}^{N-1} e^{-j2xn/N} = \frac{x}{Nsin(x/N)}
+\end{equation}
+
+对$\Lambda_p[m,i]$分析可知，其为近似稀疏信号,假设稀疏度为$N_\Lambda$，则$S_h[m,i]$也为稀疏信号，稀疏度为$PN_\lambda$，则双选信道对应的离散-时延-多普勒函数$F[m,i]$也为$PN_\Lambda$稀疏，因此可以适用于压缩感知框架。
 
 
