@@ -32,7 +32,7 @@ while iter<iter_th && mse>mse_th
             % proj = al*al'/norm(al,2)^2; % NORM(V,P) = sum(abs(V).^P)^(1/P).
             alignmentVal(col) = abs(al'*bp)^2/norm(al,2)^2;
     end
-    [tmp kpPos] = max(alignmentVal);
+    [tmp, kpPos] = max(alignmentVal);
     kp = searchCol(kpPos);
     idxSet = [idxSet kp];
     % MP can be compared as
@@ -43,7 +43,6 @@ while iter<iter_th && mse>mse_th
     % residual b11 is obtained 
     % projection 
     bp = rxSig - A(:,idxSet)*h_est(idxSet);
-     
      
      iter  = iter + 1;
      mse_history(iter)= norm(bp,2)^2;
