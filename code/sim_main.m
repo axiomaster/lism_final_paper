@@ -3,16 +3,18 @@ clc;clear;
 sim_params;
 
 SNRs = 0:3:30;  % 信噪比范围
-Frames = 300;     % 仿真帧数
+Frames = 300;   % 仿真帧数
 
 MSE         =zeros(length(SNRs),1);
 MSE_ideal   =zeros(length(SNRs),1);
 BER         =zeros(length(SNRs),1);
 
 recover_algorithm = 'OMP';  % LS, OMP, ideal
-interp_method='dft';       % 内插方式 linear, spline, dft
+interp_method='dft';    % 内插方式 linear, spline, dft
 
-delta_K = 4; % 导频占比
+N = over_sample*K + Lcp;
+
+delta_K = 8; % 导频占比
 delta_L = 1;
 Len_pilot = K*L/(delta_K*delta_L);
 iter_th = 48;
@@ -21,11 +23,12 @@ output = zeros(length(SNRs),3);
 output(:,1) = SNRs;
 
 the_date = clock;
-output_filename = sprintf('%s_%s_%dkm_%dframes_%.3f_%d_%d_%d_%04d%02d%02d_%02d%02d%02d',...
+output_filename = sprintf('%s_%s_%dkm_%dframes_sample%d_%.3f_%d_%d_%d_%04d%02d%02d_%02d%02d%02d',...
     recover_algorithm,...
     interp_method,...
     3.6*user_speed,...
     Frames,...
+    over_sample,...
     Len_pilot/(K*L),...
     delta_K,...
     delta_L,...
@@ -45,13 +48,18 @@ for SNR_index=1:length(SNRs)
     for frame_index = 1:Frames
         x_M         = uint8(randi([0,1],K*2,L));
         x_QPSK      = qammod(x_M,4,'InputType','bit','UnitAveragePower',true);
-        X_OFDM      = ifft(x_QPSK,K);
+        % 升采样
+        x_QPSK1 = [x_QPSK(1:K/2,:);zeros(K*(over_sample-1),L);x_QPSK(K/2+1:K,:)];
+        
+        X_OFDM      = ifft(x_QPSK1,over_sample*K);
         x_tr = zeros(N,L);
         for l=1:L
-            x_tr(:,l)=[X_OFDM(K+1-Lcp:K,l); X_OFDM(:,l)];%add CP
-        end        
+            x_tr(:,l)=[X_OFDM(over_sample*K+1-Lcp:over_sample*K,l); X_OFDM(:,l)];%add CP
+        end
+       
         y_faded = filter(chan,reshape(x_tr,N*L,1));
-%          plot(chan);
+%         y_faded = reshape(x_tr,N*L,1);
+%         plot(chan);
 %          [h1, H1] = ideal_ce(chan, tau, chanSRate);
         
         h_all=chan.PathGains*chan.channelFilter.AlphaMatrix;%size of h vary with tau
@@ -60,15 +68,20 @@ for SNR_index=1:length(SNRs)
             h(i,:) = mean(h_all((i-1)*N+1:i*N,:));
         end
         h = h.';
-        H=fft(h,K,1);
+        H1=fft(h,over_sample*K,1);
+        H = [H1(1:K/2,:);H1((over_sample-1)*K+K/2+1:over_sample*K,:)];
+        
+        
         
         y_rxsig=ch_add_noise(y_faded,snr);
-        Y_OFDM = zeros(K,L);
+%         y_rxsig = y_faded;
+        Y_OFDM1 = zeros(over_sample*K,L);
         for l=1:L
-            index=(l*N-K+1):l*N;
-            Y_OFDM(1:K,l)=fft(y_rxsig(index));
+            index=(l*N-over_sample*K+1):l*N;
+            Y_OFDM1(1:over_sample*K,l)=fft(y_rxsig(index));
         end        
-        
+        % 生采样
+        Y_OFDM = [Y_OFDM1(1:K/2,:);Y_OFDM1((over_sample-1)*K+K/2+1:over_sample*K,:)];
         switch recover_algorithm   
             case 'LS'
                 H_est=zeros(K,L); 
