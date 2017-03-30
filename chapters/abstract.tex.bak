@@ -22,13 +22,9 @@ The format of the English Abstract is what follows: Times New Roman, Small 4, ju
 
 \begin{symbollist}
 \item ~符号 \hspace{12em} 符号名称
-\item $\mathcal{P}$ \hspace{12.5em} 信道多径径数
-\item $P$ \hspace{12.5em} 导频数量
-\item $v$ \hspace{12.5em} 移动速度
-\item $\nu$ \hspace{12.5em} 多普勒频移
-\item $K$ \hspace{12.5em} 子载波个数
-\item $L$ \hspace{12.5em} OFDM符号数
-\item $L_{cp}$ \hspace{12.5em} 循环前缀长度
+\item P \hspace{12.5em} XXX
+\item XXX \hspace{12.5em} XXX
+\item XXX \hspace{12.5em} XXX
 \item \ldots
 \end{symbollist}
 

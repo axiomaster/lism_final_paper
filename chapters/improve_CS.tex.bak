@@ -395,5 +395,4 @@ dir_N(x) \mathop = \limits^\Delta \frac{1}{N}e^{jx(N-1)/N} \sum\limits_{n = 0}^{
 
 对$\Lambda_p[m,i]$分析可知，其为近似稀疏信号,假设稀疏度为$N_\Lambda$，则$S_h[m,i]$也为稀疏信号，稀疏度为$PN_\lambda$，则双选信道对应的离散-时延-多普勒函数$F[m,i]$也为$PN_\Lambda$稀疏，因此可以适用于压缩感知框架。
 
-\section{本章小结}
 

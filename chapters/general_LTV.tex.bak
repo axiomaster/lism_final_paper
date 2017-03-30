@@ -280,12 +280,11 @@ s(t)= \sum\limits_{i = 1}^K s_ig(t)cos(2\pi f_i t+\phi_i)
 
 正交频分复用（OFDM）在多载波的基础上，使子载波间的频谱重叠，但保持相互正交，进一步提高了频谱利用率。下图是一个OFDM 通信系统框图
 
-\begin{figure}[!h] 
+\begin{figure}[!h] \label{p_ofdm}
   \centering
   % Requires \usepackage{graphicx}
   \includegraphics[height=6cm]{figures/ofdm.eps} \\
 \caption{OFDM系统框图}
-\label{p_ofdm}
 \end{figure}
 
 
