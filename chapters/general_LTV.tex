@@ -32,7 +32,7 @@ r(t) = h_1s(t-\tau_1)+h_2s(t-\tau_2)
 \left|R(f)\right|=\left|S(f)\right|\sqrt{\left|h_1\right|^2+\left|h_2\right|^2+2\left|h_1\right|\left|h_1\right|cos(2\pi(\tau_1-\tau_2)f-(\phi_1-\phi_2))}
 \end{equation}
 
-从式(\ref{eq2_2})可以看出，发送信号确定，接收信号幅频$|R(f)|$仍受时延$\tau$和多径增益$h$ 影响。对$\tau$ 和$h$ 取不同组合，有以下几种情况
+从式(\ref{eq2_2})可以看出，发送信号确定，接收信号幅频$|R(f)|$仍受时延$\tau$ 和多径增益$h$ 影响。对$\tau$ 和$h$ 取不同组合，有以下几种情况
 
 \begin{figure}[!h]
   \centering
@@ -52,7 +52,7 @@ r(t) = h_1s(t-\tau_1)+h_2s(t-\tau_2)
 \label{p2_3}
 \end{figure}
 
-为了刻画频率选择性信道的特征，我们定义相干带宽$B_c$为最大多径时延$\tau_{max}$的倒数$B_c = 1/{\tau_{max}}$。 如果发送信号带宽$B<B_c$，则认为信号在信道中经历平坦衰落；反之则认为信号经历频率选择性衰落，频率选择性衰落会引起码间干扰ISI。
+为了刻画频率选择性信道的特征，我们定义相干带宽$B_c$为最大多径时延$\tau_{max}$ 的倒数$B_c = 1/{\tau_{max}}$。 如果发送信号带宽$B<B_c$，则认为信号在信道中经历平坦衰落；反之则认为信号经历频率选择性衰落，频率选择性衰落会引起码间干扰ISI。
 
 \subsection{时间选择性}
 
@@ -81,7 +81,7 @@ R(f) \approx hS(f-\nu)
 \end{equation}
 所以多普勒效应导致了频移，而且偏移量$\nu$正比于速度$v$和载波频率$f_c$。这样的信道称为频率色散信道。
 
-类比于多径效应，我们可以考虑两条路径具有相同的时延$\tau_0$，但多普勒频移不同，分别为$\nu_1$和$\nu_2$，则频域接收信号为
+类比于多径效应，我们可以考虑两条路径具有相同的时延$\tau_0$，但多普勒频移不同，分别为$\nu_1$ 和$\nu_2$，则频域接收信号为
 \begin{equation}
 R(f) = [h_1S(f-\nu_1)+h_2S(f-\nu_2)]e^{-j2\pi \tau_0 f}
 \end{equation}
@@ -182,7 +182,7 @@ r(t)= \int_{ - \infty }^\infty  {H(t,f)S(f)e^{j2\pi tf}df }
 r(t) = \int_{ - \infty }^\infty  \left[{ {\int_{ - \infty }^\infty  S_H(\tau,\nu)e^{j2\pi \nu t}d\nu }}\right]  s(t-\tau)d\tau
 \end{equation}
 
-式中，$h(t,\tau)=\int_{ - \infty }^\infty S_H(\tau,\nu)e^{j2\pi \nu t}d\nu$称为LTV信道的时变脉冲响应。时变脉冲响应，对应不同的时延$\tau$ 在不同的时间$t$处的信道增益。
+式中，$h(t,\tau)=\int_{ - \infty }^\infty S_H(\tau,\nu)e^{j2\pi \nu t}d\nu$ 称为LTV信道的时变脉冲响应。时变脉冲响应，对应不同的时延$\tau$ 在不同的时间$t$ 处的信道增益。
 
 可知式(\ref{eq2_8})表示的镜面反射对应的时变脉冲响应为
 \begin{equation} \label{eq2_15}
@@ -209,13 +209,13 @@ h(t,\tau) = \sum\limits_{p = 1}^{\mathcal{P}} h_p\delta (\tau-\tau_p(t))e^{j2\pi
 
 \subsection{LTV信道的随机描述}
 
-前面几节介绍LTV信道的时延-多普勒扩展函数$S_H(\tau,\nu)$，时频传输函数$H(t,f)$，时变脉冲响应函数$h(t,\tau)$等，均是对特定时变信道的确定性描述，也只适用于特定的环境，而无线系统需要设计成满足各种各样实际运行情况，就需要统计性的描述或随机描述。而P.A.Bello在1963年提出的广义平稳非相关散射（WSSUS, Wide Sense Stationary Uncorrelated Scattering）信道就是可以准确描述无线信道频选和时选特性的一种模型。
+前面几节介绍LTV信道的时延-多普勒扩展函数$S_H(\tau,\nu)$，时频传输函数$H(t,f)$，时变脉冲响应函数$h(t,\tau)$ 等，均是对特定时变信道的确定性描述，也只适用于特定的环境，而无线系统需要设计成满足各种各样实际运行情况，就需要统计性的描述或随机描述。而P.A.Bello在1963年提出的广义平稳非相关散射（WSSUS, Wide Sense Stationary Uncorrelated Scattering）信道就是可以准确描述无线信道频选和时选特性的一种模型。
 
 对于常见的符合瑞利衰落的情况，信道的系统函数$S_H(\tau,\nu)$、$H(t,f)$和$h(t,\tau)$是二阶均值为0的复高斯随机过程。
 
 LTV信道的系统函数$S_H(\tau,\nu)$、$H(t,f)$和$h(t,\tau)$通常取决于4个变量，通过引入广义平稳非相关散射（WSSUS）假设，可以得到只有两个变量的简化描述。
 
-信道中每条径的延迟，属于不同的散射体，可以认为相互之间不相关。如果信道的延迟系数不相关，则随机LTV信道可以假设成非相关散射模型（US）,即
+信道中每条径的延迟，属于不同的散射体，可以认为相互之间不相关。如果信道的延迟系数不相关，则随机LTV 信道可以假设成非相关散射模型（US）,即
 
 \begin{equation} \label{eq2_15}
 E\{h(t,\tau)h^{*}(t',\tau')\} = r'_{h}(t,t';\tau)\delta(\tau-\tau') = r'_{h}(t,t';\tau)\delta({\Delta}\tau)
@@ -235,15 +235,15 @@ E\{h(t,\tau)h^{*}(t',\tau')\} = \tilde{r}_{h}(t-t';\tau,\tau') = \tilde{r}_{h}({
 E\{h(t,\tau)h^{*}(t',\tau')\} = \tilde{r}_{h}(t-t';\tau)\delta(\tau-\tau')= \tilde{r}_{h}({\Delta}t)\delta({\Delta}\tau)
 \end{equation}
 
-因此，WSSUS信道的二阶统计量可以完全由二维函数$r_{h}({\Delta}t;{\Delta}\tau)$充分描述，定义$r_{h}({\Delta}t;{\Delta}\tau)$为信道的时延-时间相关函数。
+因此，WSSUS信道的二阶统计量可以完全由二维函数$r_{h}({\Delta}t;{\Delta}\tau)$ 充分描述，定义$r_{h}({\Delta}t;{\Delta}\tau)$为信道的时延-时间相关函数。
 
-$r_{h}({\Delta}t;{\Delta}\tau)$通常可以分解为时间差相关函数$r_{h}({\Delta}t)$和时延差相关函数$r_{h}({\Delta}\tau)$的乘积，即
+$r_{h}({\Delta}t;{\Delta}\tau)$通常可以分解为时间差相关函数$r_{h}({\Delta}t)$ 和时延差相关函数$r_{h}({\Delta}\tau)$的乘积，即
 
 \begin{equation} \label{eq2_15}
 r_{h}({\Delta}t;{\Delta}\tau) = r_{h}({\Delta}t)r_{h}({\Delta}\tau)
 \end{equation}
 
-US信道信道时延之间不相关；可以证明对于WSS信道，不同的多普勒频率是不相关的；因此，对WSSUS信道的时延-多普勒扩展函数$S_{H}(\tau,\nu)$是一个二维白色过程，即
+US信道信道时延之间不相关；可以证明对于WSS信道，不同的多普勒频率是不相关的；因此，对WSSUS 信道的时延- 多普勒扩展函数$S_{H}(\tau,\nu)$是一个二维白色过程，即
 
 \begin{equation} \label{eq2_15}
 E\{S_H(\tau,\nu)S^{*}_{H}(\tau',\nu')\} = C_{H}(\tau,\nu)\delta(\tau-\tau')\delta(\nu-\nu') = C_{H}(\tau,\nu)\delta({\Delta}\tau)\delta({\Delta}\nu)
@@ -267,29 +267,92 @@ C_{H}(\tau,\nu) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} R_H({\Delta}t,
 
 \section{正交频分复用系统}
 
-多载波的基本思想是将传输比特流分成多个比特流，调制在不同的子载波上，每个子载波对应的子信道带宽$B_N$ 远远小于系统总带宽。选择子载波个数使得子信道带宽小于信道的相干带宽$B_c$，则每个子信道经历的衰落是相对平坦的。
+多载波的基本思想是将传输比特流分成多个比特流，调制在不同的子载波上，每个子载波对应的子信道带宽$B_K$ 远远小于系统总带宽。选择子载波个数使得子信道带宽小于信道的相干带宽$B_c$，则每个子信道经历的衰落是相对平坦的。
 
 假设多载波系统中子载波个数为$K$，则各子载波上的叠加信号为
 \begin{equation} \label{eq2_15}
-s(t)= \sum\limits_{i = 1}^K s_ig(t)cos(2\pi f_i t+\phi_i)
+s(t)= \sum\limits_{k = 1}^K d_kg(t)\cos(2\pi f_k t+\phi_k)
 \end{equation}
 
-式中,$s_i$为调制符号；$g(t)$为脉冲成型滤波器，一般选用升余弦滚降滤波器；$f_i$为第$i$ 个子载波对应的频率；当取$B_N\le B_c$ 时，由前面的分析知几乎没有ISI。
+式中,$d_k$为调制符号；$f_k$ 为第$k$个子载波对应的频率；$g(t)$为脉冲成型滤波器，一般选用升余弦滚降滤波器；假设滚降系数为$\beta$，则码元周期$T_K=(1+\beta)/B_K$。当适当选取$K$ 使得$B_K\le B_c$ 时，由前面的分析此时ISI 很小。
+
+多载波系统虽然容易理解，但存在一些严重的缺点。首先，因为实际中脉冲必然是时间受限的，因此带宽比理想升余弦脉冲成型要大，所以为了保证子载波间的正交性，需要在子载波间插入保护间隔。这必然降低了多载波系统的频谱效率。其次，接收端需要近似理想特性的限带滤波器恢复出各个子载波。这样处理，需要$K$个独立的调制解调器。这些都大大增加了系统成本。
 
 \subsection{正交频分复用系统} \label{sec_ofdm}
 
-正交频分复用（OFDM）在多载波的基础上，使子载波间的频谱重叠，但保持相互正交，进一步提高了频谱利用率。下图是一个OFDM 通信系统框图
+正交频分复用（OFDM）在多载波的基础上，使子载波间的频谱重叠，进一步提高了频谱利用率。但为了能在接收端相互分离，需要保持子载波间的正交性。
 
-\begin{figure}[!h] 
+在一个符号时间$[0,T_K]$内，对任意初相$\{\phi_i\}$，子载波$\{\cos(2{\pi}(f_0+i/T_K)t+\phi_i),i=0,1,2,...\}$ 构成一组正交基，即
+
+\begin{equation}
+\begin{array}{*{20}{c}}
+\begin{aligned}
+\frac{1}{T_K} & \int_{0}^{T_K}{\cos(2{\pi}(f_0+\frac{i}{T_K})t+\phi_i)\cos(2{\pi}(f_0+\frac{j}{T_K})t+\phi_j)}dt\\
+= & \frac{1}{T_K} \int_{0}^{T_K} 0.5\cos(2{\pi}\frac{(i-j)t}{T_K}+\phi_i-\phi_j)dt + \frac{1}{T_K} \int_{0}^{T_K} 0.5\cos(2{\pi}(2f_0+\frac{i+j}{T_K})t+\phi_i+\phi_j)dt\\
+\approx & \frac{1}{T_K} \int_{0}^{T_K} 0.5\cos(2{\pi}\frac{(i-j)t}{T_K}+\phi_i-\phi_j)dt\\
+= & 0.5\delta(i-j)
+\end{aligned}
+\end{array}
+\end{equation}
+
+上式中第二项积分式，在$f_0T_N \gg 1$时近似为0，因此上式成立。同时可以证明，对任意初相，不能用更小的频率间隔构成正交基。即在符号周期$[0,T_K]$ 内，保证子载波间正交的最小频率间隔为$1/T_K$。 此时，子载波间有一部分重叠，提高了系统的频谱效率。
+
+\begin{figure}[!h]
   \centering
   % Requires \usepackage{graphicx}
-  \includegraphics[height=6cm]{figures/ofdm.eps} \\
+  \includegraphics[height=6cm]{figures/muti_carr.eps} \\
+\caption{重叠子载波}
+\label{p_ofdm}
+\end{figure}
+
+在接收端，因为子载波间的正交性，使用相干解调，可以恢复出每个子载波上的数据。
+
+\begin{equation}
+\begin{array}{*{20}{c}}
+\begin{aligned}
+\hat{d}_i = & \int_{0}^{T_K}(\sum\limits_{j=0}^{K-1}d_jg(t)\cos(2{\pi}f_jt+\phi_j))g(t)\cos(2{\pi}f_it+\phi_i)dt \\
+= & \sum\limits_{j=0}^{K-1}d_j \int_{0}^{T_K} g^2(t)\cos(2{\pi}(f_0+\frac{j}{T_K})t+\phi_j)\cos(2\pi(f_0+\frac{i}{T_K})t+\phi_i)dt\\
+= & \sum\limits_{j=0}^{K-1}d_j\delta(j-i) \\
+= & d_i
+\end{aligned}
+\end{array}
+\end{equation}
+
+式中，因为$\{\cos(2{\pi}(f_0+i/T_K)t+\phi_i),i=0,1,2,...\}$是$[0,T_K]$上的一组正交基，所以上式成立。由上可知，重叠子载波但保持子载波间的正交性，依然可以在接收端正确解调出各个子载波上的数据。
+
+假设OFDM系统中，子载波间隔为最小间隔，取$1/T_K$。则在符号时间$[0,T_K]$内，时域符号$s(t)$为
+
+%\begin{equation}
+%s(t)= \sum\limits_{i = 1}^K s_ig(t) \cos(\frac{2\pi i}{T_K} t+\phi_i)
+%\end{equation}
+\begin{equation}
+s(t)= \sum\limits_{k = 0}^{K-1} d_k \exp(j{\frac{2\pi k}{T_K} t})
+\end{equation}
+
+上式为了简便，写成了复指数形式，并忽略掉了相位和脉冲成型函数。在时域对$s(t)$进行采样，采样率为$T_K/K$，则第$n$ 个采样符号为
+
+\begin{equation}
+s_n= \sum\limits_{k = 0}^{K-1} d_k\exp(j{\frac{2\pi n k}{K}})
+\end{equation}
+
+可以看到，$s_n$等效为对$d_k$进行IDFT运算。同样在接收端，可以使用DFT运算得到对应的$d_k$
+
+\begin{equation}
+d_k= \sum\limits_{n = 0}^{K-1} s_n\exp(-j{\frac{2\pi n k}{K}})
+\end{equation}
+
+综上，OFDM在发射端调制时，可以由IDFT代替，接收端解调可以用DFT代替。因为IDFT运算和DFT运算在实际应用中可以使用FFT快速实现，实现简单，并且成本更低。下图是一个OFDM 通信系统框图
+
+\begin{figure}[!h]
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[height=7cm]{figures/ofdm.eps} \\
 \caption{OFDM系统框图}
 \label{p_ofdm}
 \end{figure}
 
 
-OFDM数字实现一般使用IFFT，插入导频后的频域信号为$S[k]$，IFFT之后的时域信号为
+假设OFDM系统调制并插入导频后的频域信号为$X[k]$，IFFT之后的时域信号为
 \begin{equation} \label{eq2_15}
 x[n]= \frac{1}{\sqrt{K}}\sum\limits_{k = 0}^{K-1} X[k]e^{j2\pi nk/K}
 \end{equation}
@@ -309,7 +372,7 @@ $x[K-L_{cp}],x[K-L_{cp}+1],...,x[K-1]$ & $x[0],x[1],...,x[K-L_{cp}-1]$ & $x[K-L_
 \end{table}
 \zihao{-4}\setlength{\baselineskip}{20pt}
 
-插入CP，使得新序列$\tilde{x}[n]$具有了循环结构，即$\tilde{x}[n-k]=x[n-k]_{K}$。将$\tilde{x}[n]$ 输入冲激响应为$h[n]$的离散信道。假设离散信道$h[n]$的最大多径时延为$M$，则输出$y[n]$为
+插入CP，使得新序列$\tilde{x}[n]$具有了循环结构，即$\tilde{x}[n-k]=x[n-k]_{K}$。将$\tilde{x}[n]$ 输入冲激响应为$h[n]$ 的离散信道。假设离散信道$h[n]$的最大多径时延为$M$，则输出$y[n]$为
 
 \begin{equation} \label{eq2_19}
 \begin{array}{*{20}{c}}
@@ -322,9 +385,13 @@ y[n] & =\tilde{x}[n] * h[n] \\
 \end{array}
 \end{equation}
 
-因此，通过在信道输入端添加循环前缀，涉及$0\le n\le K-1$时间内的信道输出$y[n]$的线性卷积就转化成了循环卷积。
+因此，通过在信道输入端添加循环前缀，涉及$0\le n\le K-1$时间内的信道输出$y[n]$ 的线性卷积就转化成了循环卷积。
 
-发送信号经过信道后，移除CP后的接收信号可表示为
+\subsection{时变信道对信道估计的影响}
+
+前面几节我们分别介绍了双选信道和OFDM系统，现在我们考虑信道双选信道对OFDM系统信道估计的影响。这里，我们只考虑离散形式，即图\ref{p_ofdm}中虚线部分等效为离散信道。
+
+OFDM系统中假设信道的最大多径时延$\tau_{max}$对应的采样符号为$M$。发送信号经过信道，移除CP后的接收信号可表示为
 
 \begin{equation} \label{eq2_19}
 \begin{aligned}
@@ -333,16 +400,28 @@ y[n] & =\sum\limits_{m = 0}^{M-1} h[n,m]x[n-m] +z[n] \\
 \end{aligned}
 \end{equation}
 
-这里，我们只考虑离散形式，即图\ref{p_ofdm}中虚线部分等效为离散信道,最大多径时延$\tau_{max}$对应的采样符号为$M$。 式中$h[n,m]$ 对应LTV 信道模型中的时变脉冲响应,表示时延为$m$时第$n$个符号处的信道增益，$z[n]$ 是加性高斯白噪声。
+式中$h[n,m]$ 对应LTV信道模型中的时变脉冲响应，表示时延为$m$时第$n$个符号处的信道复增益，$z[n]$ 是加性高斯白噪声。
 
 将上式写为矩阵形式，则为
 
 \begin{equation} \label{eq2_15}
-\mathbf{y=hF^{H}X+z}
+\mathbf{y=hF}^{H}\mathbf{X+z}
 \end{equation}
 
-式中$\mathbf{F}$为$K$维傅里叶变换矩阵，$\mathbf{h}$为时域信道矩阵的圆卷积形式
+式中$\mathbf{F}$为$K$维快速傅里叶变换矩阵，$\mathbf{F}^H$为$\mathbf{F}$的共轭转置，即IFFT矩阵。
+
 \begin{equation} \label{eq2_15}
+{\bf{F}} = \left[ {\begin{array}{*{20}{c}}
+{{w^0}}&{{w^0}}& \cdots &{{w^0}}\\
+{{w^0}}&{{w^1}}& \cdots &{{w^{\left( {K - 1} \right)}}}\\
+ \vdots & \vdots & \ddots & \vdots \\
+{{w^0}}&{{w^{\left( {K - 1} \right)}}}& \cdots &{{w^{\left( {K - 1} \right)\left( {K - 1} \right)}}}
+\end{array}} \right]
+\end{equation}
+
+式中，$w=\exp(-j2\pi/N)$。$\mathbf{h}$ 为时域信道矩阵的圆卷积形式
+
+\begin{equation}
 {\bf{h}} = \left[ {\begin{array}{*{20}{c}}
 {h\left[ {0,0} \right]}&0& \cdots &{h\left[ {K - M,M - 1} \right]}& \cdots &{h\left[ {K - 1,1} \right]}\\
 {h\left[ {0,1} \right]}& \ddots &0& \cdots & \cdots &{h\left[ {K - 1,2} \right]}\\
@@ -353,13 +432,13 @@ y[n] & =\sum\limits_{m = 0}^{M-1} h[n,m]x[n-m] +z[n] \\
 \end{array}} \right]
 \end{equation}
 
-对接收信号做FFT后得到的频域信号$\mathbf{Y}$
+对接收信号$\mathbf{y}$做FFT后得到的频域信号$\mathbf{Y}$，则有
 
 \begin{equation} \label{eq2_15}
 \mathbf{Y=FhF^{H}X+Z}
 \end{equation}
 
-对于静态信道，$\mathbf{h}$是一个Toeplitz矩阵，即每列应该是第一列的移位，对应的频域矩阵$\mathbf{H=FhF^{H}}$ 是一个对角矩阵。对于时变信道，矩阵$\mathbf{h}$各列数据不再相等，频域矩阵$\mathbf{H}$ 也不再是对角阵。因此对时变信道的估计，在时域，待估计参数从$M$ 个增加到$MK$ 个；在频域，待估计参数由静态信道的$K$个扩展为$K^2$ 个。
+对于静态信道，$\mathbf{h}$是一个Toeplitz矩阵，即每列应该是第一列的移位，对应的频域矩阵$\mathbf{H=FhF^{H}}$ 是一个对角矩阵$\mathbf{\Lambda}$。但对于时变信道，矩阵$\mathbf{h}$ 各列数据不再相等，频域矩阵$\mathbf{H}$ 也不再是对角阵。 因此极端情况下，对双选信道的估计，在时域，待估计参数从$M$ 个增加到$MK$ 个；在频域，待估计参数由静态信道的$K$ 个扩展为$K^2$ 个。
 
 \subsection{基于导频的信道估计} \label{sec2_3_1}
 
@@ -368,7 +447,7 @@ y[n] & =\sum\limits_{m = 0}^{M-1} h[n,m]x[n-m] +z[n] \\
 从上一节的分析可以得到频域导频处的关系式
 
 \begin{equation} \label{eq2_23}
-\mathbf{Y_p=X_pH_p+Z_p}
+\mathbf{Y_p=H_pX_p+Z_p}
 \end{equation}
 
 使用最简单的LS估计，可以得到导频处的信道估计值$\hat{\bf{H}}_p = \bf{{Y_p}/{X_p}}$。利用导频处的信道估计值$\hat{\bf{H}}_p$ 进行内插，可以得到完整的信道估计值$\hat{\bf{H}}$。
@@ -381,7 +460,7 @@ y[n] & =\sum\limits_{m = 0}^{M-1} h[n,m]x[n-m] +z[n] \\
 \caption{时频域传递函数}
 \end{figure}
 
-连续导频可以估计出不同时间点上所有频率处的信道，从图\ref{p2_3}可知频率选择性信道，在同一频率不同时间点上变化很小，因此内插可以相对准确的得到数据帧内所有时频块上的信道估计值。同理可知，对于图\ref{p2_4} 所示的时间选择性信道，块状导频具有更好的估计性能。
+连续导频可以估计出若干OFDM符号上所有频率处的信道，从图\ref{p2_3}可知频率选择性信道，在同一频率不同时间点上变化很小，因此内插可以相对准确的得到数据帧内所有时频块上的信道估计值。同理可知，对于图\ref{p2_4} 所示的时间选择性信道，块状导频具有更好的估计性能。
 
 \begin{figure}[!h]
   \centering
@@ -395,11 +474,5 @@ y[n] & =\sum\limits_{m = 0}^{M-1} h[n,m]x[n-m] +z[n] \\
 $\nu_{max}/{f_c}=0.0025$，信道为准静态信道；仿真图b 对应的信道包含9条径，相对频移0.0618，信道为时变信道。仿真中导频占比均为25\%，均使用LS估计。从仿真结果可以看出，在多径复杂的情况下，连续导频性能更好；在时变环境中，块状导频性能更好。
 
 \section{本章小结}
-
-本章首先介绍了无线信道的物理特征，并引出了信道的双选特性。随后介绍了LTV信道的确定描述以及统计描述模型。再次介绍了OFDM 系统，并推导了OFDM系统中信道估计的表达式。最后还介绍了不同导频图案与信道特性之间的关系，以及其对信道估计性能的影响。下一章我们将介绍压缩感知理论。
-
-本章首先介绍了无线信道的物理特征，并引出了信道的双选特性。随后介绍了LTV信道的确定描述以及统计描述模型。再次介绍了OFDM 系统，并推导了OFDM系统中信道估计的表达式。最后还介绍了不同导频图案与信道特性之间的关系，以及其对信道估计性能的影响。下一章我们将介绍压缩感知理论。
-
-本章首先介绍了无线信道的物理特征，并引出了信道的双选特性。随后介绍了LTV信道的确定描述以及统计描述模型。再次介绍了OFDM 系统，并推导了OFDM系统中信道估计的表达式。最后还介绍了不同导频图案与信道特性之间的关系，以及其对信道估计性能的影响。下一章我们将介绍压缩感知理论。
 
 本章首先介绍了无线信道的物理特征，并引出了信道的双选特性。随后介绍了LTV信道的确定描述以及统计描述模型。再次介绍了OFDM 系统，并推导了OFDM系统中信道估计的表达式。最后还介绍了不同导频图案与信道特性之间的关系，以及其对信道估计性能的影响。下一章我们将介绍压缩感知理论。
