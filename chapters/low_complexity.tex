@@ -1,40 +1,70 @@
 
 \chapter{降低压缩感知信道估计的复杂度}
 
-前面章节分别介绍了压缩感知信道估计以及改进估计性能的方法，本章讨论降低压缩感知信道估计的复杂度。
+前面章节分别介绍了压缩感知信道估计以及改进估计性能的方法，本章讨论利用压缩感知进行信道估计的复杂度，以及如何降低估计算法的复杂度。
 
-\section{复杂度分析} \label{cs_complex}
+\section{正交匹配追踪算法} \label{cs_complex}
 
-第\ref{sec_cs}介绍了压缩感知基本理论，并给出了压缩感知的测量方程，现重写如下
+为了分析压缩感知信道估计算法的复杂度，我们将压缩感知的测量方程，重写如下
 
 \begin{equation}
 \begin{aligned}
-{\bf{y = \Phi x + z}} \quad \mathbf{y,z}\in \mathbb{C}^{M} \quad \mathbf{\Phi}\in \mathbb{C}^{M\times N} \quad \mathbf{x}\in \mathbb{C}^{N}
+{\bf{y = Tx}} \quad \mathbf{y,z}\in \mathbb{C}^{M} \quad \mathbf{T}\in \mathbb{C}^{M\times N} \quad \mathbf{x}\in \mathbb{C}^{N}
 \end{aligned}
 \end{equation}
 
-将问题写成上式符合压缩感知测量方程的形式之后，原问题即成为了一个稀疏重建问题。对于稀疏重建问题，可以通过
+将问题写成上式符合压缩感知测量方程的形式之后，原问题即成为了一个稀疏重建问题。对于稀疏重建问题，第\ref{sec_cs}介绍了压缩感知基本理论，并说明了通过求解$P_0$优化问题可以得到最优解。但直接求解$P_0$问题需要遍历${N \choose K}$种情况，已经被证明是一个NP问题，无法在多项式时间内求解。但通过一些贪婪搜索算法，可以利用一系列局部优化的单项更新避免全局搜索，从而在一定误差范围内快速得到问题的近似解。贪婪搜索算法中，使用最多的就是正交匹配追踪（Orthogonal Matching Pursuit，OMP）算法。
 
-OMP算法属于贪婪搜索算法，每次迭代中，从测量矩阵中确定最大相关列，并更新部分估计值$\hat{x}_j$，近似观测值$y_j$以及残差$r_j = y - y_j$。
+\subsection{复杂度分析}
 
-OMP完整算法描述如下
+OMP算法在每次迭代中，通过从测量矩阵中寻找残差$\mathbf{r}_j$与测量矩阵$\bf{T}$中归一化内积最大的列，来逐次构成解的支撑集$S_j$，确保使得剩余残差最小。并在每次迭代之后更新部分估计值$\hat{x}_j$，近似观测值$y_j$ 以及残差$r_j = y - y_j$。通过这样的策略逐次逼近最终解。完整的算法描述如（\text{算法}\ref{alg_omp}）所示：
 
-\textbf{输入}：测量信号$\bf{y}$， 传感矩阵$\bf{T}$，稀疏度$K$
+\begin{algorithm}
+\caption{正交匹配追踪算法}
+\textbf{输入}：测量信号$\mathbf{y}$，传感矩阵$\bf{T}$，迭代次数$K$
 
-\textbf{输出}：估计值$\hat{\bf{y}}$
+\textbf{输出}：估计值$\hat{\mathbf{y}}$
 
-\textbf{初始化}：迭代计数器$j=0$，残差$r_0 = y$，索引矩阵$S_0 = \emptyset$
+\textbf{初始化}：迭代计数器$k=0$，并设置
 
-\textbf{迭代}：当$j<K$时, $j \leftarrow j+1$
+%\begin{itemize}
+  %\item
+  \qquad 初始解为$\mathbf{x}_0=\mathbf{0}$；
 
-\quad\quad 1. 确定测量矩阵$T$的列下标，式中$T_s$表示$T$的第$s$列
-$$\left| {\left\langle {{r_{j - 1}},{T_{{s_j}}}} \right\rangle } \right| = \mathop {\max }\limits_{s \in \left\{ {1,...,N} \right\}\backslash {S_{j - 1}}} \left| {\left\langle {{r_{j - 1}},{T_s}} \right\rangle } \right|$$
+  %\item
+  \qquad 初始残差$\mathbf{r}_0 = \mathbf{y-Tx}_0=\mathbf{y}$；
 
-\quad\quad 2. 扩增索引矩阵 $$S_j = S_{j-1} \cup {s_j} $$
+  %\item
+  \qquad 初始解的支撑集为$S_0=\text{support} \{\mathbf{x}_0\}={\emptyset}$。
+%\end{itemize}
 
-\quad\quad 3. 计算新的估计值$$\hat{x}_{j|S_j}={\bf{T}}^{-1}_{S_j}y$$
+\textbf{迭代}：当$k<K$时, $j \leftarrow k+1$,并执行以下步骤
 
-\quad\quad 4. 计算新的观测值和残差$$y_j = {\bf{T}}\hat{x}_j={\bf{T}}_{S_j}\hat{X}_{j|S_j}, \quad r_j = y - y_j$$
+\qquad 1. 确定测量矩阵$T$的列下标，$\mathbf{T}_s$表示$\mathbf{T}$的第$s$列
+$$\left| {\left\langle {{\mathbf{r}_{j - 1}},{\mathbf{T}_{{s_j}}}} \right\rangle } \right| = \mathop {\max }\limits_{s \in \left\{ {1,...,N} \right\}\backslash {S_{j - 1}}} \left| {\left\langle {{\mathbf{r}_{j - 1}},{\mathbf{T}_s}} \right\rangle } \right|$$
+
+\qquad 2. 扩增索引矩阵，$\{s_j\}$为第$j$次迭代中，选出的$\mathbf{T}$中第$s$列下标
+
+ $$S_j = S_{j-1} \cup \{s_j\} $$
+
+\qquad 3. 计算新的估计值，${\mathbf{T}}^{\dagger}_{S_j}$是${\mathbf{T}}_{S_j}$的伪逆
+
+$$\hat{\mathbf{x}}_{j|S_j}={\mathbf{T}}^{\dagger}_{S_j}\mathbf{y}$$
+
+\qquad 4. 计算新的观测值和残差，
+
+$$\mathbf{y}_j = {\bf{T}}\hat{x}_j={\bf{T}}_{S_j}\hat{\mathbf{X}}_{j|S_j}, \quad \mathbf{r}_j = \mathbf{y} - \mathbf{y}_j$$
+
+\label{alg_omp}
+\end{algorithm}
+
+算法\ref{alg_omp}中，计算复杂度主要集中在迭代中的第1步和第3步。
+
+第1步中需要找出测量矩阵$\mathbf{T} \in \mathbb{C}^{M{\times}N}$与残差$\mathbf{r}_j$归一化内积最大的列，因此需要遍历$N$ 次计算测量矩阵所有的列。求每一列$\mathbf{T}_s$与残差$\mathbf{r}_j$的归一化内积，需要$M$次复数乘法和加法。因此第1 步共需要计算$NM$ 次复数乘法和加法。如果原信号的稀疏度为$K$，则迭代次数为$K$，共需要$KMN$次复数乘法和加法。
+
+第3步中计算新的估计值，需要求解由支撑集$S_j$中的列下标组成的矩阵$\mathbf{T}_{S_j}$构成的矩阵的伪逆${\mathbf{T}}^{\dagger}_{S_j}$。 直接求解时${\mathbf{T}}^{\dagger}_{S_j} = \text{inv}({\mathbf{T}}^{H}_{S_j}{\mathbf{T}}_{S_j}){\mathbf{T}}^{H}_{S_j}$，需要求解${\mathbf{T}}^{H}_{S_j}{\mathbf{T}}_{S_j}$矩阵的逆矩阵。随着迭代次数的增加，矩阵${\mathbf{T}}^{H}_{S_j}{\mathbf{T}}_{S_j}$ 的维数从$1\times 1$增长到$K\times K$。而矩阵求逆的复杂度为$O(n^3)$，因此求逆的复杂度为$1^3+2^3+...+K^3=\frac{1}{4}K^2(K+1)^2$。求逆前后向量乘法的复杂度为$2(M+2M+...+KM)=K(1+K)M$。
+
+因此，OMP算法的共需要进行$KMN+K(1+K)M+\frac{1}{4}K^2(K+1)^2$次复数乘法和加法。因为稀疏信号中，有$K<M\ll N$，因此OMP 复杂度为$O(KMN)$。对比直接求解$P_0$问题的复杂度${N \choose K}=O(NM^KK^2)$，OMP算法复杂度要小很多。
 
 \section{降低恢复算法复杂度}
 
@@ -46,7 +76,7 @@ $$\left| {\left\langle {{r_{j - 1}},{T_{{s_j}}}} \right\rangle } \right| = \math
 {\bf{\hat{H}_{p}} = F_ph + V'_p} \quad \mathbf{F_p} \in \mathbb{C}^{P\times N} \quad \mathbf{h} \in \mathbb{C}^{N}
 \end{equation}
 
-式中，$\bf{F_p} = SF$，$\bf{S}\in \mathbb{C}^{P\times N}$为导频选取矩阵，$\bf{F}\in \mathbb{C}^{N\times N}$为傅里叶变换矩阵；$\bf{h}$为时域信道。对于频选信道中，可以认为信道由少数时延径组成，因此$\bf{h}$为稀疏信号，稀疏度对应多径信道的径数。
+式中，$\bf{F_p} = SF$，$\bf{S}\in \mathbb{C}^{P\times N}$为导频选取矩阵，$\bf{F}\in \mathbb{C}^{N\times N}$ 为傅里叶变换矩阵；$\bf{h}$为时域信道。对于频选信道中，可以认为信道由少数时延径组成，因此$\bf{h}$为稀疏信号，稀疏度对应多径信道的径数。
 
 在OFDM系统中，会在帧两端加入循环前缀CP来避免符号间干扰。CP长度$Lcp$大于多径信道的最大信道延迟，即可以认为，存在
 
@@ -63,7 +93,7 @@ OFDM系统中，子载波个数$N$一般大于$Lcp$。因此在式(\ref{eq4_2})中，$\mathbf{F_p} \
 \caption{时延-多普勒域-稀疏度}
 \end{figure}
 
-由\ref{cs_complex}节复杂度分析知，恢复算法复杂度与测量矩阵$N$有关。因此去掉测量矩阵$\mathbf{F_p}$中$[Lcp+1, N]$列，可以降低压缩感知频选信道估计的复杂度，且信道估计性能没有损失。
+由\ref{cs_complex}节复杂度分析知，恢复算法复杂度与测量矩阵$N$有关。因此去掉测量矩阵$\mathbf{F_p}$中$[Lcp+1, N]$ 列，可以降低压缩感知频选信道估计的复杂度，且信道估计性能没有损失。
 
 具体算法如下：
 
