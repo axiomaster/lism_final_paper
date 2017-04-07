@@ -3,19 +3,19 @@ clc;clear;
 sim_params;
 
 SNRs = 0:3:30;  % 信噪比范围
-Frames = 300;   % 仿真帧数
+Frames = 30;   % 仿真帧数
 
 MSE         =zeros(length(SNRs),1);
 MSE_ideal   =zeros(length(SNRs),1);
 BER         =zeros(length(SNRs),1);
 
-recover_algorithm = 'OMP';  % LS, OMP, ideal
+recover_algorithm = 'BEM-GCE';  % LS, OMP, ideal,BEM
 interp_method='dft';    % 内插方式 linear, spline, dft
 
 N = over_sample*K + Lcp;
 
-delta_K = 8; % 导频占比
-delta_L = 1;
+delta_K = 1; % 导频占比
+delta_L = 3;
 Len_pilot = K*L/(delta_K*delta_L);
 iter_th = 48;
 
@@ -23,8 +23,9 @@ output = zeros(length(SNRs),3);
 output(:,1) = SNRs;
 
 the_date = clock;
-output_filename = sprintf('%s_%s_%dkm_%dframes_sample%d_%.3f_%d_%d_%d_%04d%02d%02d_%02d%02d%02d',...
+output_filename = sprintf('%s_Q%d_%s_%dkm_%dframes_sample%d_%.3f_%d_%d_%d_%04d%02d%02d_%02d%02d%02d',...
     recover_algorithm,...
+    Q,...
     interp_method,...
     3.6*user_speed,...
     Frames,...
@@ -113,6 +114,11 @@ for SNR_index=1:length(SNRs)
             case 'ideal'
                 H_est = H;
                 h_est = h;
+            case {'BEM-GCE','BEM-CE'}
+                ps = [2 5 8 11];
+                H_est =OFDM_CE_BEM(Y_OFDM(:,ps),x_QPSK(:,ps),Q);
+                h_temp=ifft(H_est);
+                h_est=h_temp(1:Lcp,:);
         end
         
         %% MSE
@@ -120,7 +126,7 @@ for SNR_index=1:length(SNRs)
         if row>=Lcp
             h=h(1:Lcp,:);
         else
-            h=cat(1,h,zeros(Lcp-row+1,col));
+            h=cat(1,h,zeros(Lcp-row,col));
         end
 %                 figure;stem(abs(h(:,1)),'*r');hold on;stem(abs(h_est(:,1)),'ob');
         if ~strcmp(recover_algorithm, 'ideal')

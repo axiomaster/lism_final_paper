@@ -3,7 +3,7 @@
 
 前面章节分别介绍了压缩感知信道估计以及改进估计性能的方法，本章讨论利用压缩感知进行信道估计的复杂度，以及如何降低估计算法的复杂度。
 
-\section{正交匹配追踪算法} \label{cs_complex}
+\section{正交匹配追踪算法复杂度分析} \label{cs_complex}
 
 为了分析压缩感知信道估计算法的复杂度，我们将压缩感知的测量方程，重写如下
 
@@ -14,8 +14,6 @@
 \end{equation}
 
 将问题写成上式符合压缩感知测量方程的形式之后，原问题即成为了一个稀疏重建问题。对于稀疏重建问题，第\ref{sec_cs}介绍了压缩感知基本理论，并说明了通过求解$P_0$优化问题可以得到最优解。但直接求解$P_0$问题需要遍历${N \choose K}$种情况，已经被证明是一个NP问题，无法在多项式时间内求解。但通过一些贪婪搜索算法，可以利用一系列局部优化的单项更新避免全局搜索，从而在一定误差范围内快速得到问题的近似解。贪婪搜索算法中，使用最多的就是正交匹配追踪（Orthogonal Matching Pursuit，OMP）算法。
-
-\subsection{复杂度分析}
 
 OMP算法在每次迭代中，通过从测量矩阵中寻找残差$\mathbf{r}_j$与测量矩阵$\bf{T}$中归一化内积最大的列，来逐次构成解的支撑集$S_j$，确保使得剩余残差最小。并在每次迭代之后更新部分估计值$\hat{x}_j$，近似观测值$y_j$ 以及残差$r_j = y - y_j$。通过这样的策略逐次逼近最终解。完整的算法描述如（\text{算法}\ref{alg_omp}）所示：
 
@@ -66,14 +64,16 @@ $$\mathbf{y}_j = {\bf{T}}\hat{x}_j={\bf{T}}_{S_j}\hat{\mathbf{X}}_{j|S_j}, \quad
 
 因此，OMP算法的共需要进行$KMN+K(1+K)M+\frac{1}{4}K^2(K+1)^2$次复数乘法和加法。因为稀疏信号中，有$K<M\ll N$，因此OMP 复杂度为$O(KMN)$。对比直接求解$P_0$问题的复杂度${N \choose K}=O(NM^KK^2)$，OMP算法复杂度要小很多。
 
-\section{降低恢复算法复杂度}
+要降低压缩感知信道估计的复杂度，降低稀疏度$K$，导频数量$M$，原信号维数$N$中的任意一个，均可以减低压缩感知信道估计的复杂度。
 
 \section{降低频选信道估计的复杂度} \label{sec_low_multi}
+
+从上一节OMP算法复杂度分析知，
 
 在\ref{sec_2_5_1}节，我们使用压缩感知对频选信道进行估计，得到了符合压缩感知估计的信道表达式（\ref{eq2_37}），现重写如下
 
 \begin{equation} \label{eq4_2}
-{\bf{\hat{H}_{p}} = F_ph + V'_p} \quad \mathbf{F_p} \in \mathbb{C}^{P\times N} \quad \mathbf{h} \in \mathbb{C}^{N}
+{\bf{\hat{H}_{p}} = F_ph + V'_p} \quad \mathbf{F}_p \in \mathbb{C}^{P\times N} \quad \mathbf{h} \in \mathbb{C}^{N}
 \end{equation}
 
 式中，$\bf{F_p} = SF$，$\bf{S}\in \mathbb{C}^{P\times N}$为导频选取矩阵，$\bf{F}\in \mathbb{C}^{N\times N}$ 为傅里叶变换矩阵；$\bf{h}$为时域信道。对于频选信道中，可以认为信道由少数时延径组成，因此$\bf{h}$为稀疏信号，稀疏度对应多径信道的径数。
@@ -93,38 +93,46 @@ OFDM系统中，子载波个数$N$一般大于$Lcp$。因此在式(\ref{eq4_2})中，$\mathbf{F_p} \
 \caption{时延-多普勒域-稀疏度}
 \end{figure}
 
-由\ref{cs_complex}节复杂度分析知，恢复算法复杂度与测量矩阵$N$有关。因此去掉测量矩阵$\mathbf{F_p}$中$[Lcp+1, N]$ 列，可以降低压缩感知频选信道估计的复杂度，且信道估计性能没有损失。
+由\ref{cs_complex}节复杂度分析知，恢复算法复杂度与测量矩阵$N$有关。因此去掉测量矩阵$\mathbf{F_p}$ 中$[Lcp+1, N]$ 列，只保留其中的前$L_{cp}$列，可以降低压缩感知频选信道估计的复杂度，且信道估计性能没有损失。
 
 具体算法如下：
 
-\textbf{输入}：测量信号$\bf{y}$， 传感矩阵$\bf{T}$，稀疏度$K$
+\begin{algorithm}
+\caption{低复杂度的压缩感知频选信道估计}
+\textbf{输入}：测量信号$\mathbf{y}$，测量矩阵$\mathbf{F}_p$，迭代次数$K$，循环前缀长度$L_{cp}$
 
-\textbf{输出}：估计值$\hat{\bf{y}}$
+\textbf{输出}：估计值$\hat{\mathbf{y}}$
 
-\textbf{初始化}：迭代计数器$j=0$，残差$r_0 = y$，索引矩阵$S_0 = \emptyset$
+\textbf{初始化}：截取$\mathbf{F}_p$的前$L_{cp}$列构成新的矩阵$\mathbf{F}'_{p}$作为测量矩阵
 
-\textbf{迭代}：当$j<K$时, $j \leftarrow j+1$
+\textbf{算法过程}：
 
-\quad\quad 1. 确定测量矩阵$T$的列下标，式中$T_s$表示$T$的第$s$列
-$$\left| {\left\langle {{r_{j - 1}},{T_{{s_j}}}} \right\rangle } \right| = \mathop {\max }\limits_{s \in \left\{ {1,...,N} \right\}\backslash {S_{j - 1}}} \left| {\left\langle {{r_{j - 1}},{T_s}} \right\rangle } \right|$$
+\qquad 1. 将测量信号$\mathbf{y}$，测量矩阵$\mathbf{F}'_p$，迭代次数$K$作为OMP算法输入，得到估计值$\hat{\mathbf{y}}'$
 
-\quad\quad 2. 扩增索引矩阵 $$S_j = S_{j-1} \cup {s_j} $$
+\qquad 2. 在估计值$\hat{\mathbf{y}}' \in \mathbb{C}^L_{cp}$后补($N-L_{cp}$)个0，得到最终估计值$\hat{\mathbf{y}} \in \mathbb{C}^N$
 
-\quad\quad 3. 计算新的估计值$$\hat{x}_{j|S_j}={\bf{T}}^{-1}_{S_j}y$$
 
-\quad\quad 4. 计算新的观测值和残差$$y_j = {\bf{T}}\hat{x}_j={\bf{T}}_{S_j}\hat{X}_{j|S_j}, \quad r_j = y - y_j$$
+\label{alg_omp_fs}
+\end{algorithm}
 
-新算法复杂度为
+新算法利用了频选信道的特性，等效于在压缩感知信道估计时增加了的信道先验信息，对信道进行再次采样，将信道估计中原信道的维度从$N$ 降低为$L_{cp}$。从前面信道估计的复杂度可知，新算法的复杂度为$O(KML_{cp})$。 而且算法并没有任何的性能损失。
 
 \section{降低双选信道信道估计的复杂度}
 
 在\ref{sec_cs_doubly}节，我们使用压缩感知对双选信道进行估计，得到了符合压缩感知估计的信道表达式（\ref{eq2_33}），现重写如下
 
-\begin{equation} \label{eq2_33}
-{\bf{\hat{H}_p} = SU\alpha \quad U} \in \mathbb{C}^{NL\times{NL}}
+\begin{equation} \label{eq5_4}
+H_{l,k} = \sum\limits_{m = 0}^{K-1} \sum\limits_{i=0}^{L-1} F[m,i]e^{-j2\pi(\frac{km}{K}-\frac{li}{L})}
 \end{equation}
 
-对于双选信道，因为信道的时变特性，待估计的参数增多，测量矩阵的维度从$N\times{N}$扩增到$NL\times{NL}$。 式中，$\mathbf{\alpha}$对应信道在离散-时延-多普勒域的稀疏表示。根据\ref{sec_low_multi}节对频选信道的分析可以，信道多径时延远小于信号长度$N$，在时延域，多径信道的稀疏值集中在很小的区域内。对于多普勒频移，由多普勒谱可知，多普勒频移也集中分布在最大多普勒频移附近。
+%\begin{equation} \label{eq2_33}
+%{\bf{\hat{H}_p} = SU\alpha \quad U} \in \mathbb{C}^{NL\times{NL}}
+%\end{equation}
+
+对于双选信道，因为信道的时变特性，待估计的参数增多，测量矩阵的维度从$N\times{N}$扩增到$NL\times{NL}$。式中，$\mathbf{\alpha}$对应信道在离散-时延-多普勒域的稀疏表示。根据\ref{sec_low_multi}节对频选信道的分析可以，信道多径时延远小于信号长度$N$，在时延域，多径信道的稀疏值集中在很小的区域内。对于多普勒频移，由多普勒谱可知，多普勒频移也集中分布在最大多普勒频移附近。
+
+下图是多径信道对应的时延-多普勒弥散函数示意图，图中可以看出，时延-多普勒域-扩展函数的稀疏值集中在一个很小的子集范围内。所以，类似于频选信道，双选信道也可以在原测量矩阵的基础上通过再次采样降低测量矩阵维度。
+
 \begin{figure}[!h]
   \centering
   % Requires \usepackage{graphicx}
@@ -132,7 +140,31 @@ $$\left| {\left\langle {{r_{j - 1}},{T_{{s_j}}}} \right\rangle } \right| = \math
 \caption{时延-多普勒域-稀疏度}
 \end{figure}
 
-下图是多径信道对应的时延-多普勒弥散函数示意图，所以，类似于频选信道，双选信道也可以在原测量矩阵的基础上通过再次采样降低测量矩阵维度。
+假定支撑子集范围为$[0,D-1]\times([0,I/2-1]\cup[L-I/2,L-1])$，式中$D\le K$，$I$取偶数。由式(\ref{eq5_4})知，$\mathbf{H}_{l,k}$可以由时频域再次采样网格$\Xi$上的采样值唯一确定：
+
+\begin{equation} \label{eq5_5}
+\mathcal{G}=\{(l'\Delta{L},k'\Delta{K})\}, \quad l'=0,1,...,I-1;\quad k'=0,1,...,D-1
+\end{equation}
+
+定义$\Delta{K}\mathop {\rm{ = }}\limits^\Delta K/D$，$\Delta{L}\mathop {\rm{=}}\limits^\Delta L/I$，选取使得$\Delta{K}$和$\Delta{L}$为整数的$D$和$I$。这时，式(\ref{eq5_4})对应的再次采样形式为
+
+\begin{equation} \label{eq5_4}
+H_{l'\Delta L,k'\Delta K} = \sum\limits_{m = 0}^{D-1} \sum\limits_{i=-I/2}^{I/2-1} F[m,i]e^{-j2\pi(\frac{k'm}{D}-\frac{l'i}{I})},\quad l'=0,1,...,I-1; k'=0,1,...,D-1
+\end{equation}
+
+将再采样信号写成压缩感知标准形式，如下
+
+\begin{equation}
+\begin{aligned}
+& \mathbf{H} = \mathbf{U\alpha} \\
+& \mathbf{\alpha} = \sqrt{ID}F[m,i] \\
+& \mathbf{U}_{m,i} = \frac{1}{\sqrt{ID}}\exp\{-j2{\pi}(\frac{k'm}{D}-\frac{l'i}{I})\}
+\end{aligned}
+\end{equation}
+
+对应的导频位置的信道估计表达式为$\mathbf{H}_p = \mathbf{SU\alpha}$。此时，传感矩阵的维度从原来的$KL\times{KL}$减为$ID{\times}ID$。因此信道估计算法的复杂度降低为$O(KMID)$。
 
 \section{本章小结}
+
+本章首先分析了稀疏恢复中最常用的正交匹配追踪算法的复杂度，并指出降低信道估计算法复杂度的方法。然后分别利用频选信道和双选信道的信道特性，通过降低测量矩阵的维度，降低信道估计算法的复杂度。
 
